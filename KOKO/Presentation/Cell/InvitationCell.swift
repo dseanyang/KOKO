@@ -78,8 +78,8 @@ class InvitationCell: UITableViewCell {
 
     required init?(coder: NSCoder) { fatalError() }
 
-    func configure(with friend: Friend) {
-        nameLabel.text = friend.name
+    func configure(with viewData: InvitationViewData) {
+        nameLabel.text = viewData.name
     }
 
     private func setup() {

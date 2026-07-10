@@ -543,7 +543,7 @@ class InvitationCardsView: UIView {
         delegate?.didTapInvitationCardsView()
     }
     
-    func configure(with invitations: [Friend], isExpanded: Bool) {
+    func configure(with invitations: [InvitationViewData], isExpanded: Bool) {
         stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         
         if invitations.isEmpty {
@@ -556,9 +556,9 @@ class InvitationCardsView: UIView {
         
         if isExpanded {
             backgroundShadowCard.isHidden = true
-            for friend in invitations {
+            for invitation in invitations {
                 let card = SingleInvitationCardView()
-                card.configure(with: friend)
+                card.configure(with: invitation)
                 stackView.addArrangedSubview(card)
             }
         } else {
@@ -662,7 +662,7 @@ class SingleInvitationCardView: UIView {
         ])
     }
     
-    func configure(with friend: Friend) {
-        nameLabel.text = friend.name
+    func configure(with viewData: InvitationViewData) {
+        nameLabel.text = viewData.name
     }
 }
