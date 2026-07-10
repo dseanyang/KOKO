@@ -1,8 +1,5 @@
 import Foundation
 
-/// Parses the two date formats used in the API:
-///   - "20190801"   (yyyyMMdd)
-///   - "2019/08/02" (yyyy/MM/dd)
 struct DateParser {
 
     private static let formatter1: DateFormatter = {
@@ -23,7 +20,6 @@ struct DateParser {
         formatter1.date(from: dateString) ?? formatter2.date(from: dateString)
     }
 
-    /// Returns `true` if `dateString1` is strictly newer than `dateString2`.
     static func isNewer(_ dateString1: String, than dateString2: String) -> Bool {
         guard let d1 = parse(dateString1), let d2 = parse(dateString2) else { return false }
         return d1 > d2

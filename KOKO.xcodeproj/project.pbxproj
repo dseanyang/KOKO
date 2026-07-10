@@ -7,34 +7,53 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		14F7D9542FFF77800047853B /* FriendRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9522FFF77800047853B /* FriendRepository.swift */; };
-		14F7D9592FFF77940047853B /* GetFriendListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9572FFF77940047853B /* GetFriendListUseCase.swift */; };
-		14F7D9692FFF7A260047853B /* ScenarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9672FFF7A260047853B /* ScenarioViewController.swift */; };
-		14F7D96A2FFF7A260047853B /* InvitationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D95E2FFF7A260047853B /* InvitationCell.swift */; };
-		14F7D96B2FFF7A260047853B /* InvitationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9652FFF7A260047853B /* InvitationHeaderView.swift */; };
-		14F7D96C2FFF7A260047853B /* EmptyFriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9622FFF7A260047853B /* EmptyFriendView.swift */; };
-		14F7D96D2FFF7A260047853B /* KKAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9602FFF7A260047853B /* KKAvatarView.swift */; };
-		14F7D96E2FFF7A260047853B /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9662FFF7A260047853B /* MainTabBarController.swift */; };
-		14F7D96F2FFF7A260047853B /* FriendListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9632FFF7A260047853B /* FriendListView.swift */; };
-		14F7D9702FFF7A260047853B /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D95D2FFF7A260047853B /* FriendCell.swift */; };
-		14F7D9712FFF7A260047853B /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9642FFF7A260047853B /* FriendListViewController.swift */; };
 		14F7D9732FFF7A520047853B /* UIColor+KK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9722FFF7A520047853B /* UIColor+KK.swift */; };
-		14F7D9862FFF9BC40047853B /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D97F2FFF9BC40047853B /* UserAPI.swift */; };
-		14F7D9872FFF9BC40047853B /* FriendAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D97E2FFF9BC40047853B /* FriendAPI.swift */; };
-		14F7D98A2FFF9BC40047853B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9822FFF9BC40047853B /* CoreDataManager.swift */; };
-		14F7D98B2FFF9BC40047853B /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D97D2FFF9BC40047853B /* APIClient.swift */; };
-		14F7D98E2FFF9FC00047853B /* UserCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D98D2FFF9FC00047853B /* UserCoreData.swift */; };
-		14F7D98F2FFF9FC00047853B /* FriendCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D98C2FFF9FC00047853B /* FriendCoreData.swift */; };
-		14F7D9912FFFD8B00047853B /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9902FFFD8B00047853B /* APIConstants.swift */; };
-		93A9A43A397BE49B02363A79 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F575E3D36B5744CF7B4E55CA /* UserRepository.swift */; };
+		14F7D9B53000AA0C0047853B /* FriendMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9A93000AA0C0047853B /* FriendMapper.swift */; };
+		14F7D9B63000AA0C0047853B /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9AC3000AA0C0047853B /* APIClient.swift */; };
+		14F7D9B83000AA0C0047853B /* UserMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9AA3000AA0C0047853B /* UserMapper.swift */; };
+		14F7D9BC3000AA0C0047853B /* FriendCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9A63000AA0C0047853B /* FriendCoreData.swift */; };
+		14F7D9BE3000AA0C0047853B /* FriendDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D99D3000AA0C0047853B /* FriendDTO.swift */; };
+		14F7D9C03000AA0C0047853B /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9AF3000AA0C0047853B /* UserAPI.swift */; };
+		14F7D9C13000AA0C0047853B /* UserCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9A73000AA0C0047853B /* UserCoreData.swift */; };
+		14F7D9C23000AA0C0047853B /* FriendRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9B13000AA0C0047853B /* FriendRepository.swift */; };
+		14F7D9C33000AA0C0047853B /* FriendCacheKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9A53000AA0C0047853B /* FriendCacheKey.swift */; };
+		14F7D9C43000AA0C0047853B /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9B23000AA0C0047853B /* UserRepository.swift */; };
+		14F7D9C63000AA0C0047853B /* FriendAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9AE3000AA0C0047853B /* FriendAPI.swift */; };
+		14F7D9C73000AA0C0047853B /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9AD3000AA0C0047853B /* Endpoint.swift */; };
+		14F7D9C83000AA0C0047853B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9A43000AA0C0047853B /* CoreDataManager.swift */; };
+		14F7D9C93000AA0C0047853B /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D99E3000AA0C0047853B /* UserDTO.swift */; };
+		14F7D9D53000AA300047853B /* GetFriendListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9D13000AA300047853B /* GetFriendListUseCase.swift */; };
+		14F7D9D63000AA300047853B /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9CA3000AA300047853B /* Friend.swift */; };
+		14F7D9D73000AA300047853B /* FriendSorter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9D03000AA300047853B /* FriendSorter.swift */; };
+		14F7D9D83000AA300047853B /* GetUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9D23000AA300047853B /* GetUserUseCase.swift */; };
+		14F7D9D93000AA300047853B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9CD3000AA300047853B /* User.swift */; };
+		14F7D9DA3000AA300047853B /* FriendMerger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9CF3000AA300047853B /* FriendMerger.swift */; };
+		14F7D9DB3000AA300047853B /* FriendScenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9CC3000AA300047853B /* FriendScenario.swift */; };
+		14F7D9DC3000AA300047853B /* FriendListResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9CB3000AA300047853B /* FriendListResult.swift */; };
+		14F7D9F63000AE420047853B /* FriendListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9EC3000AE420047853B /* FriendListView.swift */; };
+		14F7D9F73000AE420047853B /* ScenarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9F13000AE420047853B /* ScenarioViewController.swift */; };
+		14F7D9F83000AE420047853B /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9EF3000AE420047853B /* FriendListViewController.swift */; };
+		14F7D9F93000AE420047853B /* KKAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9E73000AE420047853B /* KKAvatarView.swift */; };
+		14F7D9FA3000AE420047853B /* InvitationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9ED3000AE420047853B /* InvitationHeaderView.swift */; };
+		14F7D9FB3000AE420047853B /* FriendListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9F33000AE420047853B /* FriendListViewModel.swift */; };
+		14F7D9FC3000AE420047853B /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9E33000AE420047853B /* FriendCell.swift */; };
+		14F7D9FD3000AE420047853B /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9F03000AE420047853B /* MainTabBarController.swift */; };
+		14F7D9FE3000AE420047853B /* EmptyFriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9EB3000AE420047853B /* EmptyFriendView.swift */; };
+		14F7D9FF3000AE420047853B /* InvitationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9E43000AE420047853B /* InvitationCell.swift */; };
+		14F7DA043000B5180047853B /* FriendMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7DA003000B5180047853B /* FriendMapperTests.swift */; };
+		14F7DA053000B5180047853B /* FriendRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7DA013000B5180047853B /* FriendRepositoryTests.swift */; };
+		14F7DA063000B5180047853B /* UserRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7DA023000B5180047853B /* UserRepositoryTests.swift */; };
+		14F7DA0C3000B52A0047853B /* GetFriendListUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7DA093000B52A0047853B /* GetFriendListUseCaseTests.swift */; };
+		14F7DA0D3000B52A0047853B /* FriendMergerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7DA073000B52A0047853B /* FriendMergerTests.swift */; };
+		14F7DA0E3000B52A0047853B /* GetUserUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7DA0A3000B52A0047853B /* GetUserUseCaseTests.swift */; };
+		14F7DA0F3000B52A0047853B /* FriendSorterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7DA083000B52A0047853B /* FriendSorterTests.swift */; };
+		14F7DA133000B53C0047853B /* MockDomainLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7DA113000B53C0047853B /* MockDomainLayer.swift */; };
+		14F7DA143000B53C0047853B /* MockDataLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7DA103000B53C0047853B /* MockDataLayer.swift */; };
+		14F7DA173000B54D0047853B /* FriendListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7DA153000B54D0047853B /* FriendListViewModelTests.swift */; };
 		AA80000000000000000001AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA70000000000000000001AA /* AppDelegate.swift */; };
 		AA80000000000000000002AA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA70000000000000000002AA /* SceneDelegate.swift */; };
-		AA80000000000000000003AA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA70000000000000000003AA /* User.swift */; };
-		AA80000000000000000004AA /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA70000000000000000004AA /* Friend.swift */; };
 		AA80000000000000000006AA /* DateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA70000000000000000006AA /* DateParser.swift */; };
-		AA80000000000000000007AA /* FriendListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA70000000000000000007AA /* FriendListViewModel.swift */; };
 		AA80000000000000000010AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA70000000000000000011AA /* Assets.xcassets */; };
-		AA80000000000000000011AA /* FriendListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA70000000000000000012AA /* FriendListViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,38 +67,58 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		14F7D9522FFF77800047853B /* FriendRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRepository.swift; sourceTree = "<group>"; };
-		14F7D9572FFF77940047853B /* GetFriendListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFriendListUseCase.swift; sourceTree = "<group>"; };
-		14F7D95D2FFF7A260047853B /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
-		14F7D95E2FFF7A260047853B /* InvitationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationCell.swift; sourceTree = "<group>"; };
-		14F7D9602FFF7A260047853B /* KKAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKAvatarView.swift; sourceTree = "<group>"; };
-		14F7D9622FFF7A260047853B /* EmptyFriendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyFriendView.swift; sourceTree = "<group>"; };
-		14F7D9632FFF7A260047853B /* FriendListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListView.swift; sourceTree = "<group>"; };
-		14F7D9642FFF7A260047853B /* FriendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
-		14F7D9652FFF7A260047853B /* InvitationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationHeaderView.swift; sourceTree = "<group>"; };
-		14F7D9662FFF7A260047853B /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
-		14F7D9672FFF7A260047853B /* ScenarioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioViewController.swift; sourceTree = "<group>"; };
 		14F7D9722FFF7A520047853B /* UIColor+KK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+KK.swift"; sourceTree = "<group>"; };
-		14F7D97D2FFF9BC40047853B /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
-		14F7D97E2FFF9BC40047853B /* FriendAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendAPI.swift; sourceTree = "<group>"; };
-		14F7D97F2FFF9BC40047853B /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
-		14F7D9822FFF9BC40047853B /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		14F7D98C2FFF9FC00047853B /* FriendCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCoreData.swift; sourceTree = "<group>"; };
-		14F7D98D2FFF9FC00047853B /* UserCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCoreData.swift; sourceTree = "<group>"; };
-		14F7D9902FFFD8B00047853B /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		14F7D99D3000AA0C0047853B /* FriendDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDTO.swift; sourceTree = "<group>"; };
+		14F7D99E3000AA0C0047853B /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
+		14F7D9A43000AA0C0047853B /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		14F7D9A53000AA0C0047853B /* FriendCacheKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCacheKey.swift; sourceTree = "<group>"; };
+		14F7D9A63000AA0C0047853B /* FriendCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCoreData.swift; sourceTree = "<group>"; };
+		14F7D9A73000AA0C0047853B /* UserCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCoreData.swift; sourceTree = "<group>"; };
+		14F7D9A93000AA0C0047853B /* FriendMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendMapper.swift; sourceTree = "<group>"; };
+		14F7D9AA3000AA0C0047853B /* UserMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMapper.swift; sourceTree = "<group>"; };
+		14F7D9AC3000AA0C0047853B /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		14F7D9AD3000AA0C0047853B /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		14F7D9AE3000AA0C0047853B /* FriendAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendAPI.swift; sourceTree = "<group>"; };
+		14F7D9AF3000AA0C0047853B /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
+		14F7D9B13000AA0C0047853B /* FriendRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRepository.swift; sourceTree = "<group>"; };
+		14F7D9B23000AA0C0047853B /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		14F7D9CA3000AA300047853B /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		14F7D9CB3000AA300047853B /* FriendListResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListResult.swift; sourceTree = "<group>"; };
+		14F7D9CC3000AA300047853B /* FriendScenario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendScenario.swift; sourceTree = "<group>"; };
+		14F7D9CD3000AA300047853B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		14F7D9CF3000AA300047853B /* FriendMerger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendMerger.swift; sourceTree = "<group>"; };
+		14F7D9D03000AA300047853B /* FriendSorter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSorter.swift; sourceTree = "<group>"; };
+		14F7D9D13000AA300047853B /* GetFriendListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFriendListUseCase.swift; sourceTree = "<group>"; };
+		14F7D9D23000AA300047853B /* GetUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserUseCase.swift; sourceTree = "<group>"; };
+		14F7D9E33000AE420047853B /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
+		14F7D9E43000AE420047853B /* InvitationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationCell.swift; sourceTree = "<group>"; };
+		14F7D9E73000AE420047853B /* KKAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKAvatarView.swift; sourceTree = "<group>"; };
+		14F7D9EB3000AE420047853B /* EmptyFriendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyFriendView.swift; sourceTree = "<group>"; };
+		14F7D9EC3000AE420047853B /* FriendListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListView.swift; sourceTree = "<group>"; };
+		14F7D9ED3000AE420047853B /* InvitationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationHeaderView.swift; sourceTree = "<group>"; };
+		14F7D9EF3000AE420047853B /* FriendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
+		14F7D9F03000AE420047853B /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		14F7D9F13000AE420047853B /* ScenarioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioViewController.swift; sourceTree = "<group>"; };
+		14F7D9F33000AE420047853B /* FriendListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewModel.swift; sourceTree = "<group>"; };
+		14F7DA003000B5180047853B /* FriendMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendMapperTests.swift; sourceTree = "<group>"; };
+		14F7DA013000B5180047853B /* FriendRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRepositoryTests.swift; sourceTree = "<group>"; };
+		14F7DA023000B5180047853B /* UserRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryTests.swift; sourceTree = "<group>"; };
+		14F7DA073000B52A0047853B /* FriendMergerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendMergerTests.swift; sourceTree = "<group>"; };
+		14F7DA083000B52A0047853B /* FriendSorterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSorterTests.swift; sourceTree = "<group>"; };
+		14F7DA093000B52A0047853B /* GetFriendListUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFriendListUseCaseTests.swift; sourceTree = "<group>"; };
+		14F7DA0A3000B52A0047853B /* GetUserUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserUseCaseTests.swift; sourceTree = "<group>"; };
+		14F7DA103000B53C0047853B /* MockDataLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataLayer.swift; sourceTree = "<group>"; };
+		14F7DA113000B53C0047853B /* MockDomainLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDomainLayer.swift; sourceTree = "<group>"; };
+		14F7DA153000B54D0047853B /* FriendListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewModelTests.swift; sourceTree = "<group>"; };
+		14F7DA183000B59A0047853B /* KOKO.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = KOKO.xctestplan; sourceTree = "<group>"; };
 		AA70000000000000000001AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA70000000000000000002AA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AA70000000000000000003AA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		AA70000000000000000004AA /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		AA70000000000000000006AA /* DateParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateParser.swift; sourceTree = "<group>"; };
-		AA70000000000000000007AA /* FriendListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewModel.swift; sourceTree = "<group>"; };
 		AA70000000000000000010AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA70000000000000000011AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		AA70000000000000000012AA /* FriendListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewModelTests.swift; sourceTree = "<group>"; };
 		AA70000000000000000013AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC0000000000000000000001 /* KOKO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KOKO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC0000000000000000000002 /* KOKOTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KOKOTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F575E3D36B5744CF7B4E55CA /* UserRepository.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,55 +139,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		14F7D9532FFF77800047853B /* Repositories */ = {
-			isa = PBXGroup;
-			children = (
-				14F7D9522FFF77800047853B /* FriendRepository.swift */,
-				F575E3D36B5744CF7B4E55CA /* UserRepository.swift */,
-			);
-			path = Repositories;
-			sourceTree = "<group>";
-		};
-		14F7D9582FFF77940047853B /* UseCases */ = {
-			isa = PBXGroup;
-			children = (
-				14F7D9572FFF77940047853B /* GetFriendListUseCase.swift */,
-			);
-			path = UseCases;
-			sourceTree = "<group>";
-		};
-		14F7D95F2FFF7A260047853B /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				14F7D95D2FFF7A260047853B /* FriendCell.swift */,
-				14F7D95E2FFF7A260047853B /* InvitationCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		14F7D9612FFF7A260047853B /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				14F7D9602FFF7A260047853B /* KKAvatarView.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		14F7D9682FFF7A260047853B /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				14F7D95F2FFF7A260047853B /* Cells */,
-				14F7D9612FFF7A260047853B /* Components */,
-				14F7D9622FFF7A260047853B /* EmptyFriendView.swift */,
-				14F7D9632FFF7A260047853B /* FriendListView.swift */,
-				14F7D9642FFF7A260047853B /* FriendListViewController.swift */,
-				14F7D9652FFF7A260047853B /* InvitationHeaderView.swift */,
-				14F7D9662FFF7A260047853B /* MainTabBarController.swift */,
-				14F7D9672FFF7A260047853B /* ScenarioViewController.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		14F7D9742FFF92750047853B /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,39 +146,197 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
-		14F7D9802FFF9BC40047853B /* API */ = {
+		14F7D99F3000AA0C0047853B /* DTO */ = {
 			isa = PBXGroup;
 			children = (
-				14F7D97D2FFF9BC40047853B /* APIClient.swift */,
-				14F7D97E2FFF9BC40047853B /* FriendAPI.swift */,
-				14F7D97F2FFF9BC40047853B /* UserAPI.swift */,
-				14F7D9902FFFD8B00047853B /* APIConstants.swift */,
+				14F7D99D3000AA0C0047853B /* FriendDTO.swift */,
+				14F7D99E3000AA0C0047853B /* UserDTO.swift */,
 			);
-			path = API;
+			path = DTO;
 			sourceTree = "<group>";
 		};
-		14F7D9842FFF9BC40047853B /* Local */ = {
+		14F7D9A83000AA0C0047853B /* LocalDataSource */ = {
 			isa = PBXGroup;
 			children = (
-				14F7D9822FFF9BC40047853B /* CoreDataManager.swift */,
-				14F7D98C2FFF9FC00047853B /* FriendCoreData.swift */,
-				14F7D98D2FFF9FC00047853B /* UserCoreData.swift */,
+				14F7D9A43000AA0C0047853B /* CoreDataManager.swift */,
+				14F7D9A53000AA0C0047853B /* FriendCacheKey.swift */,
+				14F7D9A63000AA0C0047853B /* FriendCoreData.swift */,
+				14F7D9A73000AA0C0047853B /* UserCoreData.swift */,
 			);
-			path = Local;
+			path = LocalDataSource;
 			sourceTree = "<group>";
 		};
-		14F7D9852FFF9BC40047853B /* Data */ = {
+		14F7D9AB3000AA0C0047853B /* Mappers */ = {
 			isa = PBXGroup;
 			children = (
-				14F7D9802FFF9BC40047853B /* API */,
-				14F7D9842FFF9BC40047853B /* Local */,
+				14F7D9A93000AA0C0047853B /* FriendMapper.swift */,
+				14F7D9AA3000AA0C0047853B /* UserMapper.swift */,
+			);
+			path = Mappers;
+			sourceTree = "<group>";
+		};
+		14F7D9B03000AA0C0047853B /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				14F7D9AC3000AA0C0047853B /* APIClient.swift */,
+				14F7D9AD3000AA0C0047853B /* Endpoint.swift */,
+				14F7D9AE3000AA0C0047853B /* FriendAPI.swift */,
+				14F7D9AF3000AA0C0047853B /* UserAPI.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		14F7D9B33000AA0C0047853B /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				14F7D9B13000AA0C0047853B /* FriendRepository.swift */,
+				14F7D9B23000AA0C0047853B /* UserRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		14F7D9B43000AA0C0047853B /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				14F7D99F3000AA0C0047853B /* DTO */,
+				14F7D9A83000AA0C0047853B /* LocalDataSource */,
+				14F7D9AB3000AA0C0047853B /* Mappers */,
+				14F7D9B03000AA0C0047853B /* Network */,
+				14F7D9B33000AA0C0047853B /* Repositories */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		14F7D9CE3000AA300047853B /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				14F7D9CA3000AA300047853B /* Friend.swift */,
+				14F7D9CB3000AA300047853B /* FriendListResult.swift */,
+				14F7D9CC3000AA300047853B /* FriendScenario.swift */,
+				14F7D9CD3000AA300047853B /* User.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		14F7D9D33000AA300047853B /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				14F7D9CF3000AA300047853B /* FriendMerger.swift */,
+				14F7D9D03000AA300047853B /* FriendSorter.swift */,
+				14F7D9D13000AA300047853B /* GetFriendListUseCase.swift */,
+				14F7D9D23000AA300047853B /* GetUserUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		14F7D9D43000AA300047853B /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				14F7D9CE3000AA300047853B /* Entities */,
+				14F7D9D33000AA300047853B /* UseCases */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		14F7D9E53000AE420047853B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				14F7D9E33000AE420047853B /* FriendCell.swift */,
+				14F7D9E43000AE420047853B /* InvitationCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		14F7D9E83000AE420047853B /* ReusableView */ = {
+			isa = PBXGroup;
+			children = (
+				14F7D9E73000AE420047853B /* KKAvatarView.swift */,
+			);
+			path = ReusableView;
+			sourceTree = "<group>";
+		};
+		14F7D9EE3000AE420047853B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				14F7D9EB3000AE420047853B /* EmptyFriendView.swift */,
+				14F7D9EC3000AE420047853B /* FriendListView.swift */,
+				14F7D9ED3000AE420047853B /* InvitationHeaderView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		14F7D9F23000AE420047853B /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				14F7D9EF3000AE420047853B /* FriendListViewController.swift */,
+				14F7D9F03000AE420047853B /* MainTabBarController.swift */,
+				14F7D9F13000AE420047853B /* ScenarioViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		14F7D9F43000AE420047853B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				14F7D9F33000AE420047853B /* FriendListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		14F7D9F53000AE420047853B /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				14F7D9E53000AE420047853B /* Cell */,
+				14F7D9E83000AE420047853B /* ReusableView */,
+				14F7D9EE3000AE420047853B /* View */,
+				14F7D9F23000AE420047853B /* ViewController */,
+				14F7D9F43000AE420047853B /* ViewModel */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		14F7DA033000B5180047853B /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				14F7DA003000B5180047853B /* FriendMapperTests.swift */,
+				14F7DA013000B5180047853B /* FriendRepositoryTests.swift */,
+				14F7DA023000B5180047853B /* UserRepositoryTests.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		14F7DA0B3000B52A0047853B /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				14F7DA073000B52A0047853B /* FriendMergerTests.swift */,
+				14F7DA083000B52A0047853B /* FriendSorterTests.swift */,
+				14F7DA093000B52A0047853B /* GetFriendListUseCaseTests.swift */,
+				14F7DA0A3000B52A0047853B /* GetUserUseCaseTests.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		14F7DA123000B53C0047853B /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				14F7DA103000B53C0047853B /* MockDataLayer.swift */,
+				14F7DA113000B53C0047853B /* MockDomainLayer.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		14F7DA163000B54D0047853B /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				14F7DA153000B54D0047853B /* FriendListViewModelTests.swift */,
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		FF0000000000000000000001 = {
 			isa = PBXGroup;
 			children = (
+				14F7DA183000B59A0047853B /* KOKO.xctestplan */,
 				FF0000000000000000000002 /* KOKO */,
 				FF000000000000000000000A /* KOKOTests */,
 				FF000000000000000000000B /* Products */,
@@ -201,25 +349,13 @@
 			children = (
 				AA70000000000000000001AA /* AppDelegate.swift */,
 				AA70000000000000000002AA /* SceneDelegate.swift */,
-				14F7D9852FFF9BC40047853B /* Data */,
-				14F7D9682FFF7A260047853B /* Views */,
-				14F7D9582FFF77940047853B /* UseCases */,
-				14F7D9532FFF77800047853B /* Repositories */,
-				FF0000000000000000000003 /* Models */,
+				14F7D9F53000AE420047853B /* Presentation */,
+				14F7D9D43000AA300047853B /* Domain */,
+				14F7D9B43000AA0C0047853B /* Data */,
 				FF0000000000000000000005 /* Utils */,
-				FF0000000000000000000006 /* ViewModels */,
 				FF0000000000000000000009 /* Resources */,
 			);
 			path = KOKO;
-			sourceTree = "<group>";
-		};
-		FF0000000000000000000003 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				AA70000000000000000003AA /* User.swift */,
-				AA70000000000000000004AA /* Friend.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		FF0000000000000000000005 /* Utils */ = {
@@ -229,14 +365,6 @@
 				14F7D9722FFF7A520047853B /* UIColor+KK.swift */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		FF0000000000000000000006 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				AA70000000000000000007AA /* FriendListViewModel.swift */,
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		FF0000000000000000000009 /* Resources */ = {
@@ -251,8 +379,11 @@
 		FF000000000000000000000A /* KOKOTests */ = {
 			isa = PBXGroup;
 			children = (
-				AA70000000000000000012AA /* FriendListViewModelTests.swift */,
 				AA70000000000000000013AA /* Info.plist */,
+				14F7DA163000B54D0047853B /* Presentation */,
+				14F7DA123000B53C0047853B /* Mocks */,
+				14F7DA0B3000B52A0047853B /* Domain */,
+				14F7DA033000B5180047853B /* Data */,
 			);
 			path = KOKOTests;
 			sourceTree = "<group>";
@@ -367,30 +498,40 @@
 			files = (
 				AA80000000000000000001AA /* AppDelegate.swift in Sources */,
 				AA80000000000000000002AA /* SceneDelegate.swift in Sources */,
-				14F7D9912FFFD8B00047853B /* APIConstants.swift in Sources */,
-				AA80000000000000000003AA /* User.swift in Sources */,
-				14F7D9542FFF77800047853B /* FriendRepository.swift in Sources */,
-				AA80000000000000000004AA /* Friend.swift in Sources */,
-				14F7D9592FFF77940047853B /* GetFriendListUseCase.swift in Sources */,
-				14F7D9692FFF7A260047853B /* ScenarioViewController.swift in Sources */,
-				14F7D96A2FFF7A260047853B /* InvitationCell.swift in Sources */,
-				14F7D96B2FFF7A260047853B /* InvitationHeaderView.swift in Sources */,
-				14F7D9862FFF9BC40047853B /* UserAPI.swift in Sources */,
-				14F7D9872FFF9BC40047853B /* FriendAPI.swift in Sources */,
-				14F7D98A2FFF9BC40047853B /* CoreDataManager.swift in Sources */,
-				14F7D98B2FFF9BC40047853B /* APIClient.swift in Sources */,
-				14F7D98E2FFF9FC00047853B /* UserCoreData.swift in Sources */,
-				14F7D98F2FFF9FC00047853B /* FriendCoreData.swift in Sources */,
-				14F7D96C2FFF7A260047853B /* EmptyFriendView.swift in Sources */,
-				14F7D96D2FFF7A260047853B /* KKAvatarView.swift in Sources */,
-				14F7D96E2FFF7A260047853B /* MainTabBarController.swift in Sources */,
+				14F7D9B53000AA0C0047853B /* FriendMapper.swift in Sources */,
+				14F7D9D53000AA300047853B /* GetFriendListUseCase.swift in Sources */,
+				14F7D9D63000AA300047853B /* Friend.swift in Sources */,
+				14F7D9F63000AE420047853B /* FriendListView.swift in Sources */,
+				14F7D9F73000AE420047853B /* ScenarioViewController.swift in Sources */,
+				14F7D9F83000AE420047853B /* FriendListViewController.swift in Sources */,
+				14F7D9F93000AE420047853B /* KKAvatarView.swift in Sources */,
+				14F7D9FA3000AE420047853B /* InvitationHeaderView.swift in Sources */,
+				14F7D9FB3000AE420047853B /* FriendListViewModel.swift in Sources */,
+				14F7D9FC3000AE420047853B /* FriendCell.swift in Sources */,
+				14F7D9FD3000AE420047853B /* MainTabBarController.swift in Sources */,
+				14F7D9FE3000AE420047853B /* EmptyFriendView.swift in Sources */,
+				14F7D9FF3000AE420047853B /* InvitationCell.swift in Sources */,
+				14F7D9D73000AA300047853B /* FriendSorter.swift in Sources */,
+				14F7D9D83000AA300047853B /* GetUserUseCase.swift in Sources */,
+				14F7D9D93000AA300047853B /* User.swift in Sources */,
+				14F7D9DA3000AA300047853B /* FriendMerger.swift in Sources */,
+				14F7D9DB3000AA300047853B /* FriendScenario.swift in Sources */,
+				14F7D9DC3000AA300047853B /* FriendListResult.swift in Sources */,
+				14F7D9B63000AA0C0047853B /* APIClient.swift in Sources */,
+				14F7D9B83000AA0C0047853B /* UserMapper.swift in Sources */,
+				14F7D9BC3000AA0C0047853B /* FriendCoreData.swift in Sources */,
+				14F7D9BE3000AA0C0047853B /* FriendDTO.swift in Sources */,
+				14F7D9C03000AA0C0047853B /* UserAPI.swift in Sources */,
+				14F7D9C13000AA0C0047853B /* UserCoreData.swift in Sources */,
+				14F7D9C23000AA0C0047853B /* FriendRepository.swift in Sources */,
+				14F7D9C33000AA0C0047853B /* FriendCacheKey.swift in Sources */,
+				14F7D9C43000AA0C0047853B /* UserRepository.swift in Sources */,
+				14F7D9C63000AA0C0047853B /* FriendAPI.swift in Sources */,
+				14F7D9C73000AA0C0047853B /* Endpoint.swift in Sources */,
+				14F7D9C83000AA0C0047853B /* CoreDataManager.swift in Sources */,
+				14F7D9C93000AA0C0047853B /* UserDTO.swift in Sources */,
 				14F7D9732FFF7A520047853B /* UIColor+KK.swift in Sources */,
-				14F7D96F2FFF7A260047853B /* FriendListView.swift in Sources */,
-				14F7D9702FFF7A260047853B /* FriendCell.swift in Sources */,
-				14F7D9712FFF7A260047853B /* FriendListViewController.swift in Sources */,
 				AA80000000000000000006AA /* DateParser.swift in Sources */,
-				AA80000000000000000007AA /* FriendListViewModel.swift in Sources */,
-				93A9A43A397BE49B02363A79 /* UserRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,7 +539,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA80000000000000000011AA /* FriendListViewModelTests.swift in Sources */,
+				14F7DA0C3000B52A0047853B /* GetFriendListUseCaseTests.swift in Sources */,
+				14F7DA0D3000B52A0047853B /* FriendMergerTests.swift in Sources */,
+				14F7DA0E3000B52A0047853B /* GetUserUseCaseTests.swift in Sources */,
+				14F7DA0F3000B52A0047853B /* FriendSorterTests.swift in Sources */,
+				14F7DA043000B5180047853B /* FriendMapperTests.swift in Sources */,
+				14F7DA053000B5180047853B /* FriendRepositoryTests.swift in Sources */,
+				14F7DA133000B53C0047853B /* MockDomainLayer.swift in Sources */,
+				14F7DA143000B53C0047853B /* MockDataLayer.swift in Sources */,
+				14F7DA173000B54D0047853B /* FriendListViewModelTests.swift in Sources */,
+				14F7DA063000B5180047853B /* UserRepositoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

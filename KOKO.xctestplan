@@ -1,0 +1,28 @@
+{
+  "configurations" : [
+    {
+      "id" : "3F8E556C-9009-43E7-B31E-62FEE9AAAA04",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:KOKO.xcodeproj",
+      "identifier" : "BB0000000000000000000001",
+      "name" : "KOKO"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:KOKO.xcodeproj",
+        "identifier" : "BB0000000000000000000002",
+        "name" : "KOKOTests"
+      }
+    }
+  ],
+  "version" : 1
+}
