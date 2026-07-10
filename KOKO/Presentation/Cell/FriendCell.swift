@@ -88,12 +88,12 @@ class FriendCell: UITableViewCell {
 
     required init?(coder: NSCoder) { fatalError() }
 
-    func configure(with friend: Friend, index: Int) {
-        nameLabel.text = friend.name
-        starImageView.isHidden = !friend.hasStarBadge
+    func configure(with viewModel: FriendCellViewModel) {
+        nameLabel.text = viewModel.name
+        starImageView.isHidden = !viewModel.isTop
 
-        switch friend.friendStatus {
-        case .inviteSent: // Now shows up in header cards, but if it's here, hide buttons.
+        switch viewModel.friendStatus {
+        case .inviteSent: // Shows up in header cards; if here, hide action buttons
             transferButton.isHidden = true
             invitingButton.isHidden = true
             moreButton.isHidden = true

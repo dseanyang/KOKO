@@ -51,7 +51,17 @@ class MainTabBarController: UITabBarController {
             image: UIImage(named: "icTabbarProducts"),
             tag: 0)
         
-        let friendsVC = FriendListViewController(scenario: initialScenario)
+        // Assemble the full dependency chain here (Composition Root)
+        let friendRepo = FriendRepository()
+        let userRepo = UserRepository()
+        let getFriendsUseCase = GetFriendListUseCase(friendRepository: friendRepo)
+        let getUserUseCase = GetUserUseCase(userRepository: userRepo)
+        let friendsVM = FriendListViewModel(
+            getFriendListUseCase: getFriendsUseCase,
+            getUserUseCase: getUserUseCase,
+            scenario: initialScenario
+        )
+        let friendsVC = FriendListViewController(viewModel: friendsVM)
         let friendsItem = UITabBarItem(
             title: "朋友",
             image: UIImage(named: "icTabbarFriends"),tag: 1)

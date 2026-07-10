@@ -1,114 +1,150 @@
 import Foundation
-
-enum ViewState: Equatable {
-    case idle
-    case loading
-    case loaded
-    case error(String)
-}
+import Combine
 
 @MainActor
-class FriendListViewModel {
+final class FriendListViewModel {
 
-    var onUpdate: (() -> Void)?
-    var onFriendsStateChanged: ((ViewState) -> Void)?
-    var onUserStateChanged: ((ViewState) -> Void)?
+    // MARK: - Output (single published state — Combine binding)
+    @Published private(set) var state: FriendListViewState = .initial
 
-    private(set) var user: User?
-    private(set) var friends: [Friend] = []
-    private(set) var invitations: [Friend] = []
-    private(set) var filteredFriends: [Friend] = []
-    private(set) var isInvitationExpanded: Bool = false
-    private(set) var currentScenario: FriendScenario = .noFriends
+    // MARK: - Private raw data (never exposed to the View layer)
+    private var user: User?
+    private var friends: [Friend] = []
+    private var invitations: [Friend] = []
+    private var currentScenario: FriendScenario = .noFriends
+    private var isInvitationExpanded: Bool = false
+    private var isListLoading: Bool = false
+    private var currentError: String? = nil
 
-    var searchText: String = "" {
-        didSet { applyFilter() }
+    @Published var searchText: String = ""
+    private var debouncedSearchText: String = ""
+    private var displayedFriends: [Friend] {
+        debouncedSearchText.isEmpty
+            ? friends
+            : friends.filter { $0.name.localizedCaseInsensitiveContains(debouncedSearchText) }
     }
 
-    var hasInvitations: Bool { !invitations.isEmpty }
-    var hasFriends: Bool { !friends.isEmpty }
-
-    // (Kept for view controller's updateUI logic)
-    var isListLoading: Bool = false
-
+    // MARK: - Dependencies
     private let getFriendListUseCase: GetFriendListUseCaseProtocol
     private let getUserUseCase: GetUserUseCaseProtocol
 
     private var loadTask: Task<Void, Never>?
-    private var userTask: Task<Void, Never>?
+    
+    // Combine cancellables
+    private var cancellables = Set<AnyCancellable>()
 
-    init(getFriendListUseCase: GetFriendListUseCaseProtocol = GetFriendListUseCase(),
-         getUserUseCase: GetUserUseCaseProtocol = GetUserUseCase()) {
+    // MARK: - Init (full Dependency Injection)
+    init(
+        getFriendListUseCase: GetFriendListUseCaseProtocol,
+        getUserUseCase: GetUserUseCaseProtocol,
+        scenario: FriendScenario
+    ) {
         self.getFriendListUseCase = getFriendListUseCase
         self.getUserUseCase = getUserUseCase
+        self.currentScenario = scenario
+        
+        setupSearchDebounce()
+    }
+    
+    private func setupSearchDebounce() {
+        $searchText
+            .dropFirst()
+            .debounce(for: .milliseconds(300), scheduler: DispatchQueue.main)
+            .removeDuplicates()
+            .sink { [weak self] text in
+                self?.debouncedSearchText = text
+                self?.publishState()
+            }
+            .store(in: &cancellables)
     }
 
+    // MARK: - Public API
 
-    func loadData(scenario: FriendScenario, clearSearch: Bool = true) {
+    func loadData(clearSearch: Bool = true) {
         loadTask?.cancel()
-        userTask?.cancel()
+        currentError = nil
 
-        currentScenario = scenario
-        if clearSearch { searchText = "" }
+        if clearSearch {
+            searchText = ""
+            debouncedSearchText = ""
+        }
+        
+        isListLoading = true
+        user = nil
+        publishState()
 
-        userTask = Task { await loadUser() }
-        loadTask = Task { await loadFriends(scenario: scenario) }
+        loadTask = Task {
+            do {
+                async let fetchUser = getUserUseCase.execute()
+                async let fetchFriends = getFriendListUseCase.execute(scenario: currentScenario)
+                
+                let (userResult, friendsResult) = try await (fetchUser, fetchFriends)
+                
+                guard !Task.isCancelled else { return }
+                
+                self.user = userResult
+                self.friends = friendsResult.friends
+                self.invitations = friendsResult.invitations
+                self.isListLoading = false
+                self.publishState()
+            } catch {
+                guard !Task.isCancelled else { return }
+                self.isListLoading = false
+                self.currentError = error.localizedDescription
+                self.publishState()
+            }
+        }
     }
 
     func refresh() {
-        loadData(scenario: currentScenario, clearSearch: false)
+        loadData(clearSearch: false)
     }
 
     func toggleInvitationExpanded() {
         isInvitationExpanded.toggle()
-        onUpdate?()
+        publishState()
+    }
+
+    func updateSearch(_ text: String) {
+        searchText = text
     }
 
 
-    private func loadUser() async {
-        onUserStateChanged?(.loading)
 
-        do {
-            let fetchedUser = try await getUserUseCase.execute()
-            guard !Task.isCancelled else { return }
-            self.user = fetchedUser
-            onUserStateChanged?(.loaded)
-            onUpdate?()
-        } catch {
-            guard !Task.isCancelled else { return }
-            onUserStateChanged?(.error(error.localizedDescription))
+    // MARK: - State computation
+
+    private func publishState() {
+        let hasFriends = !friends.isEmpty
+        let hasInvites = !invitations.isEmpty
+        let isNoFriends = currentScenario == .noFriends
+
+        let profileData: ProfileViewData? = user.map { u in
+            ProfileViewData(
+                name: u.name,
+                kokoIdText: isNoFriends ? "設定 KOKO ID" : "KOKO ID : \(u.kokoid)"
+            )
         }
-    }
 
-
-    private func loadFriends(scenario: FriendScenario) async {
-        isListLoading = true
-        onFriendsStateChanged?(.loading)
-
-        do {
-            let result = try await getFriendListUseCase.execute(scenario: scenario)
-            guard !Task.isCancelled else {
-                isListLoading = false
-                onFriendsStateChanged?(.idle)
-                return
-            }
-            self.friends     = result.friends
-            self.invitations = result.invitations
-            isListLoading = false
-            onFriendsStateChanged?(.loaded)
-            applyFilter()
-        } catch {
-            isListLoading = false
-            guard !Task.isCancelled else { return }
-            onFriendsStateChanged?(.error(error.localizedDescription))
+        let invitationViewData = invitations.map { InvitationViewData(name: $0.name) }
+        let friendCellVMs = displayedFriends.map {
+            FriendCellViewModel(name: $0.name, isTop: $0.hasStarBadge, friendStatus: $0.friendStatus)
         }
-    }
+        let invitingBadge = friends.filter { $0.friendStatus == .inviting }.count
 
+        let showEmpty = !hasFriends && !hasInvites && !isListLoading
+        let showSearchBar = !isNoFriends
 
-    private func applyFilter() {
-        filteredFriends = searchText.isEmpty
-            ? friends
-            : friends.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
-        onUpdate?()
+        state = FriendListViewState(
+            profile: profileData,
+            invitations: invitationViewData,
+            displayedFriends: friendCellVMs,
+            invitingBadgeCount: invitingBadge,
+            showEmptyView: showEmpty,
+            showSearchBar: showSearchBar,
+            isInvitationExpanded: isInvitationExpanded,
+            isListLoading: isListLoading,
+            showKokoIdDot: isNoFriends,
+            error: currentError
+        )
     }
 }
