@@ -9,7 +9,7 @@ class FriendListView: UIView {
     
     weak var delegate: FriendListViewDelegate?
     
-    let headerHeight: CGFloat = 166
+    let headerHeight: CGFloat = 140
     let searchBarHeight: CGFloat = 44
     var headerHeightConstraint: NSLayoutConstraint?
     var cancelButtonWidthConstraint: NSLayoutConstraint?
@@ -42,7 +42,7 @@ class FriendListView: UIView {
 
     let profileHeaderView: UIView = {
         let v = UIView()
-        v.backgroundColor = .white
+        v.backgroundColor = .hotGrey
         v.clipsToBounds = true
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
@@ -57,7 +57,7 @@ class FriendListView: UIView {
 
     let userSpinner: UIActivityIndicatorView = {
         let ai = UIActivityIndicatorView(style: .medium)
-        ai.color = .kkPink
+        ai.color = .hotPink
         ai.hidesWhenStopped = true
         ai.translatesAutoresizingMaskIntoConstraints = false
         return ai
@@ -66,7 +66,7 @@ class FriendListView: UIView {
     let nameLabel: UILabel = {
         let l = UILabel()
         l.font = .systemFont(ofSize: 18, weight: .bold)
-        l.textColor = .kkText
+        l.textColor = .lightGrey
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
@@ -74,14 +74,14 @@ class FriendListView: UIView {
     let kokoIdLabel: UILabel = {
         let l = UILabel()
         l.font = .systemFont(ofSize: 13, weight: .regular)
-        l.textColor = .kkSubText
+        l.textColor = .warmGrey
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
     
     let kokoIdArrow: UIImageView = {
         let iv = UIImageView(image: UIImage(systemName: "chevron.right"))
-        iv.tintColor = .kkSubText
+        iv.tintColor = .warmGrey
         iv.contentMode = .scaleAspectFit
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
@@ -89,7 +89,7 @@ class FriendListView: UIView {
     
     let pinkDot: UIView = {
         let v = UIView()
-        v.backgroundColor = .kkPink
+        v.backgroundColor = .hotPink
         v.layer.cornerRadius = 4
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
@@ -103,7 +103,7 @@ class FriendListView: UIView {
 
     let tabContainerView: UIView = {
         let v = UIView()
-        v.backgroundColor = .white
+        v.backgroundColor = .hotGrey
         v.clipsToBounds = true
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
@@ -112,7 +112,7 @@ class FriendListView: UIView {
     let friendsTabButton: UIButton = {
         let b = UIButton(type: .system)
         b.setTitle("好友", for: .normal)
-        b.setTitleColor(.kkPink, for: .normal)
+        b.setTitleColor(.hotPink, for: .normal)
         b.titleLabel?.font = .systemFont(ofSize: 15, weight: .semibold)
         b.translatesAutoresizingMaskIntoConstraints = false
         return b
@@ -121,7 +121,7 @@ class FriendListView: UIView {
     let chatTabButton: UIButton = {
         let b = UIButton(type: .system)
         b.setTitle("聊天", for: .normal)
-        b.setTitleColor(.kkSubText, for: .normal)
+        b.setTitleColor(.warmGrey, for: .normal)
         b.titleLabel?.font = .systemFont(ofSize: 15, weight: .regular)
         b.translatesAutoresizingMaskIntoConstraints = false
         return b
@@ -129,7 +129,7 @@ class FriendListView: UIView {
 
     let tabIndicator: UIView = {
         let v = UIView()
-        v.backgroundColor = .kkPink
+        v.backgroundColor = .hotPink
         v.layer.cornerRadius = 2
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
@@ -137,7 +137,7 @@ class FriendListView: UIView {
 
     let tabSeparator: UIView = {
         let v = UIView()
-        v.backgroundColor = .kkSeparator
+        v.backgroundColor = .veryLightGrey
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
@@ -146,7 +146,7 @@ class FriendListView: UIView {
         let l = UILabel()
         l.font = .systemFont(ofSize: 11, weight: .semibold)
         l.textColor = .white
-        l.backgroundColor = .kkPink
+        l.backgroundColor = .hotPink
         l.textAlignment = .center
         l.layer.cornerRadius = 9
         l.clipsToBounds = true
@@ -160,7 +160,7 @@ class FriendListView: UIView {
         l.text = "99+"
         l.font = .systemFont(ofSize: 11, weight: .semibold)
         l.textColor = .white
-        l.backgroundColor = .kkPink
+        l.backgroundColor = .hotPink
         l.textAlignment = .center
         l.layer.cornerRadius = 9
         l.clipsToBounds = true
@@ -177,7 +177,7 @@ class FriendListView: UIView {
 
     let searchBarContainerView: UIView = {
         let v = UIView()
-        v.backgroundColor = .kkBackground
+        v.backgroundColor = .white
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
@@ -186,10 +186,10 @@ class FriendListView: UIView {
         let tf = UITextField()
         tf.attributedPlaceholder = NSAttributedString(
             string: "  想轉一筆給誰呢？",
-            attributes: [.foregroundColor: UIColor.kkSubText]
+            attributes: [.foregroundColor: UIColor.warmGrey]
         )
-        tf.textColor = .kkText
-        tf.tintColor = .kkPink
+        tf.textColor = .lightGrey
+        tf.tintColor = .hotPink
         tf.font = .systemFont(ofSize: 14)
         tf.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
         tf.layer.cornerRadius = 10
@@ -197,7 +197,7 @@ class FriendListView: UIView {
         tf.returnKeyType = .search
         let iconView = UIImageView(frame: CGRect(x: 8, y: 8, width: 18, height: 18))
         iconView.image = UIImage(systemName: "magnifyingglass")
-        iconView.tintColor = .kkSubText
+        iconView.tintColor = .warmGrey
         iconView.contentMode = .scaleAspectFit
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 36, height: 36))
         paddingView.addSubview(iconView)
@@ -210,7 +210,7 @@ class FriendListView: UIView {
     let cancelSearchButton: UIButton = {
         let b = UIButton(type: .system)
         b.setTitle("取消", for: .normal)
-        b.setTitleColor(.kkPink, for: .normal)
+        b.setTitleColor(.hotPink, for: .normal)
         b.titleLabel?.font = .systemFont(ofSize: 15)
         b.alpha = 0
         b.translatesAutoresizingMaskIntoConstraints = false
@@ -219,7 +219,7 @@ class FriendListView: UIView {
 
     lazy var tableView: UITableView = {
         let tv = UITableView(frame: .zero, style: .plain)
-        tv.backgroundColor = .kkBackground
+        tv.backgroundColor = .white
         tv.separatorStyle = .none
         tv.showsVerticalScrollIndicator = false
         tv.translatesAutoresizingMaskIntoConstraints = false
@@ -231,7 +231,7 @@ class FriendListView: UIView {
 
     lazy var refreshControl: UIRefreshControl = {
         let rc = UIRefreshControl()
-        rc.tintColor = .kkPink
+        rc.tintColor = .hotPink
         return rc
     }()
 
@@ -244,7 +244,7 @@ class FriendListView: UIView {
 
     let listSpinner: UIActivityIndicatorView = {
         let ai = UIActivityIndicatorView(style: .medium)
-        ai.color = .kkPink
+        ai.color = .hotPink
         ai.hidesWhenStopped = true
         ai.translatesAutoresizingMaskIntoConstraints = false
         return ai
@@ -261,7 +261,6 @@ class FriendListView: UIView {
     
     private func setupUI() {
         backgroundColor = .white
-
         profileHeaderView.addSubview(atmButton)
         profileHeaderView.addSubview(transferButton)
         profileHeaderView.addSubview(scanButton)
@@ -415,7 +414,7 @@ class FriendListView: UIView {
             searchTextField.leadingAnchor.constraint(equalTo: searchBarContainerView.leadingAnchor, constant: 20),
             searchTextField.trailingAnchor.constraint(equalTo: addFriendsButton.leadingAnchor, constant: -8),
             searchTextField.centerYAnchor.constraint(equalTo: searchBarContainerView.centerYAnchor),
-            searchTextField.heightAnchor.constraint(equalToConstant: searchBarHeight),
+            searchTextField.heightAnchor.constraint(equalToConstant: 32),
 
             addFriendsButton.trailingAnchor.constraint(equalTo: cancelSearchButton.leadingAnchor, constant: -8),
             addFriendsButton.centerYAnchor.constraint(equalTo: searchBarContainerView.centerYAnchor),
@@ -577,7 +576,7 @@ class SingleInvitationCardView: UIView {
     private let nameLabel: UILabel = {
         let l = UILabel()
         l.font = .systemFont(ofSize: 16, weight: .semibold)
-        l.textColor = .kkText
+        l.textColor = .lightGrey
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
@@ -586,7 +585,7 @@ class SingleInvitationCardView: UIView {
         let l = UILabel()
         l.text = "邀請你成為好友：）"
         l.font = .systemFont(ofSize: 13, weight: .regular)
-        l.textColor = .kkSubText
+        l.textColor = .warmGrey
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
@@ -594,10 +593,10 @@ class SingleInvitationCardView: UIView {
     private let acceptButton: UIButton = {
         let b = UIButton(type: .system)
         b.setImage(UIImage(systemName: "checkmark"), for: .normal)
-        b.tintColor = .kkPink
+        b.tintColor = .hotPink
         b.backgroundColor = .white
         b.layer.borderWidth = 1.5
-        b.layer.borderColor = UIColor.kkPink.cgColor
+        b.layer.borderColor = UIColor.hotPink.cgColor
         b.layer.cornerRadius = 15
         b.translatesAutoresizingMaskIntoConstraints = false
         return b
@@ -606,10 +605,10 @@ class SingleInvitationCardView: UIView {
     private let declineButton: UIButton = {
         let b = UIButton(type: .system)
         b.setImage(UIImage(systemName: "xmark"), for: .normal)
-        b.tintColor = .kkSubText
+        b.tintColor = .warmGrey
         b.backgroundColor = .white
         b.layer.borderWidth = 1.5
-        b.layer.borderColor = UIColor.kkSubText.cgColor
+        b.layer.borderColor = UIColor.warmGrey.cgColor
         b.layer.cornerRadius = 15
         b.translatesAutoresizingMaskIntoConstraints = false
         return b

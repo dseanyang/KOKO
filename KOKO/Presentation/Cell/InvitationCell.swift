@@ -26,7 +26,7 @@ class InvitationCell: UITableViewCell {
     private let nameLabel: UILabel = {
         let l = UILabel()
         l.font = .systemFont(ofSize: 16, weight: .semibold)
-        l.textColor = .kkText
+        l.textColor = .lightGrey
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
@@ -35,7 +35,7 @@ class InvitationCell: UITableViewCell {
         let l = UILabel()
         l.text = "邀請你加入好友！"
         l.font = .systemFont(ofSize: 13, weight: .regular)
-        l.textColor = .kkSubText
+        l.textColor = .warmGrey
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
@@ -45,7 +45,7 @@ class InvitationCell: UITableViewCell {
         b.setTitle("接受", for: .normal)
         b.setTitleColor(.white, for: .normal)
         b.titleLabel?.font = .systemFont(ofSize: 14, weight: .semibold)
-        b.backgroundColor = .kkPink
+        b.backgroundColor = .hotPink
         b.layer.cornerRadius = 16
         b.translatesAutoresizingMaskIntoConstraints = false
         return b
@@ -54,11 +54,11 @@ class InvitationCell: UITableViewCell {
     private let declineButton: UIButton = {
         let b = UIButton(type: .system)
         b.setTitle("拒絕", for: .normal)
-        b.setTitleColor(.kkSubText, for: .normal)
+        b.setTitleColor(.warmGrey, for: .normal)
         b.titleLabel?.font = .systemFont(ofSize: 14, weight: .semibold)
         b.backgroundColor = .white
         b.layer.borderWidth = 1
-        b.layer.borderColor = UIColor.kkSeparator.cgColor
+        b.layer.borderColor = UIColor.veryLightGrey.cgColor
         b.layer.cornerRadius = 16
         b.translatesAutoresizingMaskIntoConstraints = false
         return b
@@ -66,7 +66,7 @@ class InvitationCell: UITableViewCell {
 
     private let separatorLine: UIView = {
         let v = UIView()
-        v.backgroundColor = .kkSeparator
+        v.backgroundColor = .veryLightGrey
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
