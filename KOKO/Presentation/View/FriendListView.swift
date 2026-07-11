@@ -432,7 +432,7 @@ class FriendListView: UIView {
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
             // Empty view
-            emptyFriendView.topAnchor.constraint(equalTo: searchBarContainerView.bottomAnchor, constant: 30),
+            emptyFriendView.topAnchor.constraint(equalTo: searchBarContainerView.bottomAnchor, constant: 0),
             emptyFriendView.leadingAnchor.constraint(equalTo: leadingAnchor),
             emptyFriendView.trailingAnchor.constraint(equalTo: trailingAnchor),
             emptyFriendView.bottomAnchor.constraint(equalTo: bottomAnchor),

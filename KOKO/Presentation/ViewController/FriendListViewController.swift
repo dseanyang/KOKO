@@ -8,6 +8,8 @@ class FriendListViewController: UIViewController {
     private let dataSource = FriendTableDataSource()
     private let delegate = FriendTableDelegate()
     private var cancellables = Set<AnyCancellable>()
+    
+    private var previousState: FriendListViewState = .initial
 
     // MARK: - Search animation state (purely UI, not business logic)
     private var isSearchExpanded = false
@@ -73,13 +75,35 @@ class FriendListViewController: UIViewController {
     }
 
     // MARK: - Pure render function: VC knows nothing except the ViewState
-
+    
     private func render(_ state: FriendListViewState) {
-        renderHeader(state)
-        renderInvitation(state)
+        if previousState.profile != state.profile ||
+            previousState.showKokoIdDot != state.showKokoIdDot {
+
+            renderHeader(state)
+        }
+
+        if previousState.invitations != state.invitations ||
+            previousState.isInvitationExpanded != state.isInvitationExpanded {
+
+            renderInvitation(state)
+        }
+
         renderSearch(state)
-        renderList(state)
-        renderError(state)
+
+        if previousState.displayedFriends != state.displayedFriends ||
+            previousState.invitingBadgeCount != state.invitingBadgeCount ||
+            previousState.showEmptyView != state.showEmptyView ||
+            previousState.isListLoading != state.isListLoading {
+
+            renderList(state)
+        }
+
+        if previousState.error != state.error {
+            renderError(state)
+        }
+
+        previousState = state
     }
 
     private func renderHeader(_ state: FriendListViewState) {
@@ -122,6 +146,7 @@ class FriendListViewController: UIViewController {
             contentView.searchBarContainerView.isHidden = true
             contentView.searchBarHeightConstraint?.constant = 0
         }
+        contentView.chatBadgeLabel.isHidden = !state.showSearchBar
     }
 
     private func renderList(_ state: FriendListViewState) {
@@ -220,8 +245,12 @@ class FriendListViewController: UIViewController {
         contentView.addFriendsButtonWidthConstraint = contentView.addFriendsButton.widthAnchor.constraint(equalToConstant: 36)
         contentView.addFriendsButtonWidthConstraint?.isActive = true
 
-        contentView.invitationCardsHeightConstraint?.constant =
-            contentView.invitationCardsView.requiredHeight
+        if previousState.invitations.isEmpty {
+            contentView.invitationCardsHeightConstraint?.constant = 0
+        } else {
+            contentView.invitationCardsHeightConstraint?.constant =
+                contentView.invitationCardsView.requiredHeight
+        }
 
         UIView.animate(withDuration: 0.35, delay: 0, usingSpringWithDamping: 0.85, initialSpringVelocity: 0.5) {
             self.contentView.cancelSearchButton.alpha = 0

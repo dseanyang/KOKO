@@ -116,12 +116,13 @@ final class FriendListViewModel {
     private func publishState() {
         let hasFriends = !friends.isEmpty
         let hasInvites = !invitations.isEmpty
-        let isNoFriends = currentScenario == .noFriends
 
         let profileData: ProfileViewData? = user.map { u in
             ProfileViewData(
                 name: u.name,
-                kokoIdText: isNoFriends ? "設定 KOKO ID" : "KOKO ID : \(u.kokoid)"
+                kokoIdText: u.kokoid.isEmpty
+                ? "設定 KOKO ID"
+                : "KOKO ID : \(u.kokoid)"
             )
         }
 
@@ -132,7 +133,7 @@ final class FriendListViewModel {
         let invitingBadge = friends.filter { $0.friendStatus == .inviting }.count
 
         let showEmpty = !hasFriends && !hasInvites && !isListLoading
-        let showSearchBar = !isNoFriends
+        let showSearchBar = hasFriends
 
         state = FriendListViewState(
             profile: profileData,
@@ -143,7 +144,7 @@ final class FriendListViewModel {
             showSearchBar: showSearchBar,
             isInvitationExpanded: isInvitationExpanded,
             isListLoading: isListLoading,
-            showKokoIdDot: isNoFriends,
+            showKokoIdDot: !hasFriends && !hasInvites,
             error: currentError
         )
     }
