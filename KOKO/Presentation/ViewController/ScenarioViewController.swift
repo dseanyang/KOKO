@@ -7,7 +7,7 @@ class ScenarioViewController: UIViewController {
         let l = UILabel()
         l.text = "KOKO"
         l.font = .systemFont(ofSize: 36, weight: .black)
-        l.textColor = .kkPink
+        l.textColor = .hotPink
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
@@ -16,7 +16,7 @@ class ScenarioViewController: UIViewController {
         let l = UILabel()
         l.text = "好友列表"
         l.font = .systemFont(ofSize: 28, weight: .bold)
-        l.textColor = .kkText
+        l.textColor = .lightGrey
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
@@ -25,7 +25,7 @@ class ScenarioViewController: UIViewController {
         let l = UILabel()
         l.text = "請選擇要展示的情境"
         l.font = .systemFont(ofSize: 15, weight: .regular)
-        l.textColor = .kkSubText
+        l.textColor = .warmGrey
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
@@ -40,7 +40,7 @@ class ScenarioViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .kkBackground
+        view.backgroundColor = .kkWhite
         navigationController?.navigationBar.isHidden = true
         setupUI()
     }
@@ -54,7 +54,7 @@ class ScenarioViewController: UIViewController {
         // Background gradient
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [
-            UIColor.kkPink.withAlphaComponent(0.08).cgColor,
+            UIColor.hotPink.withAlphaComponent(0.08).cgColor,
             UIColor.white.cgColor
         ]
         gradientLayer.frame = view.bounds
@@ -102,19 +102,19 @@ class ScenarioViewController: UIViewController {
         let titleLabel = UILabel()
         titleLabel.text = scenario.title
         titleLabel.font = .systemFont(ofSize: 16, weight: .semibold)
-        titleLabel.textColor = .kkText
+        titleLabel.textColor = .lightGrey
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
 
         // Description
         let descLabel = UILabel()
         descLabel.text = scenario.description
         descLabel.font = .systemFont(ofSize: 12, weight: .regular)
-        descLabel.textColor = .kkSubText
+        descLabel.textColor = .warmGrey
         descLabel.translatesAutoresizingMaskIntoConstraints = false
 
         // Chevron
         let chevron = UIImageView(image: UIImage(systemName: "chevron.right"))
-        chevron.tintColor = .kkSubText
+        chevron.tintColor = .warmGrey
         chevron.translatesAutoresizingMaskIntoConstraints = false
 
         // Text stack

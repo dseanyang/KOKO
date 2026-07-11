@@ -13,7 +13,7 @@ class EmptyFriendView: UIView {
         let l = UILabel()
         l.text = "就從加好友開始吧：）"
         l.font = .systemFont(ofSize: 21, weight: .semibold)
-        l.textColor = .kkText
+        l.textColor = .lightGrey
         l.textAlignment = .center
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
@@ -23,43 +23,60 @@ class EmptyFriendView: UIView {
         let l = UILabel()
         l.text = "與好友們一起用 KOKO 聊起來！\n還能互相收付款、發紅包喔：）"
         l.font = .systemFont(ofSize: 14, weight: .regular)
-        l.textColor = .kkSubText
+        l.textColor = .warmGrey
         l.textAlignment = .center
         l.numberOfLines = 0
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
-
-    private let addButton: UIButton = {
-        let b = UIButton(type: .custom)
-        b.setTitle("加好友", for: .normal)
-        b.setTitleColor(.white, for: .normal)
-        b.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
-        b.setImage(UIImage(named: "icAddFriendWhite"), for: .normal)
-        b.semanticContentAttribute = .forceRightToLeft
-        b.imageEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: -8)
-        
-        // Gradient background simulation
-        b.backgroundColor = UIColor(red: 140/255, green: 200/255, blue: 50/255, alpha: 1)
-        b.layer.cornerRadius = 20
-        b.layer.shadowColor = UIColor(red: 140/255, green: 200/255, blue: 50/255, alpha: 1).cgColor
-        b.layer.shadowOpacity = 0.5
-        b.layer.shadowOffset = CGSize(width: 0, height: 4)
-        b.layer.shadowRadius = 8
-        b.translatesAutoresizingMaskIntoConstraints = false
-        return b
+    
+    private let addButtonIcon: UIImageView = {
+        let iv = UIImageView(image: UIImage(named: "icAddFriendWhite"))
+        iv.contentMode = .scaleAspectFit
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.isUserInteractionEnabled = false
+        return iv
     }()
+    
+    private let addButton: UIButton = {
+        var config = UIButton.Configuration.plain()
 
+        config.title = "加好友"
+        config.baseForegroundColor = .white
+        config.background.backgroundColor = .clear
+        config.contentInsets = NSDirectionalEdgeInsets(
+            top: 0,
+            leading: 24,
+            bottom: 0,
+            trailing: 24
+        )
+
+        let button = UIButton(configuration: config)
+
+        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
+
+        button.layer.cornerRadius = 20
+        button.layer.masksToBounds = false
+
+        button.layer.shadowColor = UIColor.appleGreen40.cgColor
+        button.layer.shadowOpacity = 0.4
+        button.layer.shadowOffset = CGSize(width: 0, height: 4)
+        button.layer.shadowRadius = 8
+
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     private let footerLabel: UILabel = {
         let l = UILabel()
         let text = "幫助好友更快找到你？設定 KOKO ID"
         let attr = NSMutableAttributedString(string: text, attributes: [
             .font: UIFont.systemFont(ofSize: 13, weight: .regular),
-            .foregroundColor: UIColor.kkSubText
+            .foregroundColor: UIColor.warmGrey
         ])
         let range = (text as NSString).range(of: "設定 KOKO ID")
         attr.addAttributes([
-            .foregroundColor: UIColor.kkPink,
+            .foregroundColor: UIColor.hotPink,
             .underlineStyle: NSUnderlineStyle.single.rawValue
         ], range: range)
         l.attributedText = attr
@@ -86,10 +103,9 @@ class EmptyFriendView: UIView {
     private func setup() {
         backgroundColor = .white
 
-        // Apply real gradient
         gradientLayer.colors = [
-            UIColor(red: 86/255, green: 179/255, blue: 11/255, alpha: 1).cgColor,
-            UIColor(red: 166/255, green: 204/255, blue: 66/255, alpha: 1).cgColor
+            UIColor.frogGreen.cgColor,
+            UIColor.b.cgColor
         ]
         gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
         gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
@@ -99,6 +115,7 @@ class EmptyFriendView: UIView {
         addSubview(mainLabel)
         addSubview(subLabel)
         addSubview(addButton)
+        addButton.addSubview(addButtonIcon)
         addSubview(footerLabel)
 
         NSLayoutConstraint.activate([
@@ -113,13 +130,19 @@ class EmptyFriendView: UIView {
             subLabel.topAnchor.constraint(equalTo: mainLabel.bottomAnchor, constant: 8),
             subLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
 
-            addButton.topAnchor.constraint(equalTo: subLabel.bottomAnchor, constant: 25),
+            addButton.topAnchor.constraint(equalTo: subLabel.bottomAnchor, constant: 24),
             addButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             addButton.widthAnchor.constraint(equalToConstant: 192),
             addButton.heightAnchor.constraint(equalToConstant: 40),
+            
+            addButtonIcon.centerYAnchor.constraint(equalTo: addButton.centerYAnchor),
+            addButtonIcon.trailingAnchor.constraint(equalTo: addButton.trailingAnchor, constant: -8),
+            addButtonIcon.widthAnchor.constraint(equalToConstant: 24),
+            addButtonIcon.heightAnchor.constraint(equalToConstant: 24),
 
-            footerLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
-            footerLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
+            footerLabel.topAnchor.constraint(equalTo: addButton.bottomAnchor, constant: 37),
+            footerLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            footerLabel.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -24)
         ])
     }
 }
