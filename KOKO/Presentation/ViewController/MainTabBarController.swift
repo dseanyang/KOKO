@@ -1,12 +1,21 @@
 import UIKit
 
 class MainTabBarController: UITabBarController {
-
+    
     private let koButton: UIButton = {
-        let b = UIButton(type: .custom)
-        b.setImage(UIImage(named: "icTabbarHome"), for: .normal)
-        b.imageView?.contentMode = .scaleAspectFit
-        b.adjustsImageWhenHighlighted = false
+        var config = UIButton.Configuration.plain()
+        config.image = UIImage(named: "icTabbarHome")
+        config.background.backgroundColor = .clear
+
+        let b = UIButton(configuration: config)
+
+        b.configurationUpdateHandler = { button in
+            guard var config = button.configuration else { return }
+
+            config.image = UIImage(named: "icTabbarHome")
+            button.configuration = config
+        }
+
         b.translatesAutoresizingMaskIntoConstraints = false
         return b
     }()
@@ -30,8 +39,8 @@ class MainTabBarController: UITabBarController {
 
     private func setupTabBar() {
         tabBar.backgroundColor = .white
-        tabBar.tintColor = .kkPink
-        tabBar.unselectedItemTintColor = .kkSubText
+        tabBar.tintColor = .hotPink
+        tabBar.unselectedItemTintColor = .warmGrey
         
         // Remove default top line
         tabBar.shadowImage = UIImage()
@@ -96,7 +105,7 @@ class MainTabBarController: UITabBarController {
         
         NSLayoutConstraint.activate([
             koButton.centerXAnchor.constraint(equalTo: tabBar.centerXAnchor),
-            koButton.centerYAnchor.constraint(equalTo: tabBar.topAnchor, constant: 16),
+            koButton.centerYAnchor.constraint(equalTo: tabBar.topAnchor, constant: 20),
             koButton.widthAnchor.constraint(equalToConstant: buttonSize),
             koButton.heightAnchor.constraint(equalToConstant: buttonSize)
         ])

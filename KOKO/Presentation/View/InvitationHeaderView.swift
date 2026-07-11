@@ -10,7 +10,7 @@ class InvitationHeaderView: UITableViewHeaderFooterView {
         let l = UILabel()
         l.text = "好友邀請"
         l.font = .systemFont(ofSize: 18, weight: .bold)
-        l.textColor = .kkText
+        l.textColor = .lightGrey
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
@@ -18,14 +18,14 @@ class InvitationHeaderView: UITableViewHeaderFooterView {
     let badgeLabel: UILabel = {
         let l = UILabel()
         l.font = .systemFont(ofSize: 13, weight: .semibold)
-        l.textColor = .kkPink
+        l.textColor = .hotPink
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
 
     let arrowImageView: UIImageView = {
         let iv = UIImageView(image: UIImage(systemName: "chevron.up"))
-        iv.tintColor = .kkSubText
+        iv.tintColor = .warmGrey
         iv.contentMode = .scaleAspectFit
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
@@ -48,7 +48,7 @@ class InvitationHeaderView: UITableViewHeaderFooterView {
     }
 
     private func setup() {
-        contentView.backgroundColor = .kkBackground
+        contentView.backgroundColor = .kkWhite
 
         contentView.addSubview(titleLabel)
         contentView.addSubview(badgeLabel)

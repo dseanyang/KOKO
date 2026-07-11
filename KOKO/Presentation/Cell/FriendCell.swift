@@ -18,7 +18,7 @@ class FriendCell: UITableViewCell {
     private let nameLabel: UILabel = {
         let l = UILabel()
         l.font = .systemFont(ofSize: 16, weight: .semibold)
-        l.textColor = .kkText
+        l.textColor = .lightGrey
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
@@ -26,7 +26,7 @@ class FriendCell: UITableViewCell {
     private let statusLabel: UILabel = {
         let l = UILabel()
         l.font = .systemFont(ofSize: 12, weight: .regular)
-        l.textColor = .kkSubText
+        l.textColor = .warmGrey
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
@@ -34,10 +34,10 @@ class FriendCell: UITableViewCell {
     private let transferButton: UIButton = {
         let b = UIButton(type: .system)
         b.setTitle("轉帳", for: .normal)
-        b.setTitleColor(.kkPink, for: .normal)
+        b.setTitleColor(.hotPink, for: .normal)
         b.titleLabel?.font = .systemFont(ofSize: 14, weight: .medium)
         b.layer.borderWidth = 1.2
-        b.layer.borderColor = UIColor.kkPink.cgColor
+        b.layer.borderColor = UIColor.hotPink.cgColor
         b.layer.cornerRadius = 16
         b.translatesAutoresizingMaskIntoConstraints = false
         return b
@@ -46,10 +46,10 @@ class FriendCell: UITableViewCell {
     private let invitingButton: UIButton = {
         let b = UIButton(type: .system)
         b.setTitle("邀請中", for: .normal)
-        b.setTitleColor(.kkSubText, for: .normal)
+        b.setTitleColor(.warmGrey, for: .normal)
         b.titleLabel?.font = .systemFont(ofSize: 14, weight: .medium)
         b.layer.borderWidth = 1.2
-        b.layer.borderColor = UIColor.kkSubText.cgColor
+        b.layer.borderColor = UIColor.warmGrey.cgColor
         b.layer.cornerRadius = 16
         b.translatesAutoresizingMaskIntoConstraints = false
         return b
@@ -58,7 +58,7 @@ class FriendCell: UITableViewCell {
     private let moreButton: UIButton = {
         let b = UIButton(type: .system)
         b.setImage(UIImage(systemName: "ellipsis"), for: .normal)
-        b.tintColor = .kkSubText
+        b.tintColor = .warmGrey
         b.translatesAutoresizingMaskIntoConstraints = false
         return b
     }()
@@ -74,7 +74,7 @@ class FriendCell: UITableViewCell {
 
     private let separatorLine: UIView = {
         let v = UIView()
-        v.backgroundColor = .kkSeparator
+        v.backgroundColor = .veryLightGrey
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
