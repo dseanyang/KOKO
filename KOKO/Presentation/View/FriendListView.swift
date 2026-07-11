@@ -311,6 +311,8 @@ class FriendListView: UIView {
 
         headerHeightConstraint = profileHeaderView.heightAnchor.constraint(equalToConstant: headerHeight)
         tabHeightConstraint = tabContainerView.heightAnchor.constraint(equalToConstant: 46)
+        
+        invitationCardsHeightConstraint = invitationCardsView.heightAnchor.constraint(equalToConstant: 0)
 
         NSLayoutConstraint.activate([
             // Profile header
@@ -366,6 +368,7 @@ class FriendListView: UIView {
             invitationCardsView.topAnchor.constraint(equalTo: profileHeaderView.bottomAnchor),
             invitationCardsView.leadingAnchor.constraint(equalTo: leadingAnchor),
             invitationCardsView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            invitationCardsHeightConstraint!, 
 
             // Tab container
             tabContainerView.topAnchor.constraint(equalTo: invitationCardsView.bottomAnchor),
@@ -494,6 +497,14 @@ class InvitationCardsView: UIView {
         return sv
     }()
     
+    var requiredHeight: CGFloat {
+        layoutIfNeeded()
+
+        return stackView.systemLayoutSizeFitting(
+            UIView.layoutFittingCompressedSize
+        ).height + 30
+    }
+    
     // For collapsed state, the card placed behind to simulate stacking
     private let backgroundShadowCard: UIView = {
         let v = UIView()
@@ -506,8 +517,6 @@ class InvitationCardsView: UIView {
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
-    
-    private var emptyHeightConstraint: NSLayoutConstraint!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -534,8 +543,6 @@ class InvitationCardsView: UIView {
             backgroundShadowCard.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -10),
             backgroundShadowCard.heightAnchor.constraint(equalToConstant: 70)
         ])
-        
-        emptyHeightConstraint = heightAnchor.constraint(equalToConstant: 0)
     }
     
     @objc private func handleTap() {
@@ -547,11 +554,9 @@ class InvitationCardsView: UIView {
         
         if invitations.isEmpty {
             isHidden = true
-            emptyHeightConstraint.isActive = true
             return
         }
         isHidden = false
-        emptyHeightConstraint.isActive = false
         
         if isExpanded {
             backgroundShadowCard.isHidden = true
