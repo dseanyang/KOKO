@@ -44,6 +44,7 @@ final class FriendRepository: FriendRepositoryProtocol {
     private func fetch(remote: () async throws -> [Friend], cacheKey: FriendCacheKey) async throws -> [Friend] {
         do {
             let friends = try await remote()
+            
             localDataSource.saveFriends(friends, cacheKey: cacheKey)
             return friends
         } catch {

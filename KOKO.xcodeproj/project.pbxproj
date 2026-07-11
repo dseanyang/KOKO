@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14A276683002813D00DAACAB /* InvitationCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A276653002813D00DAACAB /* InvitationCardsView.swift */; };
+		14A276693002813D00DAACAB /* SingleInvitationCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A276663002813D00DAACAB /* SingleInvitationCardView.swift */; };
 		14F7D9732FFF7A520047853B /* UIColor+KK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9722FFF7A520047853B /* UIColor+KK.swift */; };
 		14F7D9B53000AA0C0047853B /* FriendMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9A93000AA0C0047853B /* FriendMapper.swift */; };
 		14F7D9B63000AA0C0047853B /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9AC3000AA0C0047853B /* APIClient.swift */; };
@@ -34,7 +36,6 @@
 		14F7D9F73000AE420047853B /* ScenarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9F13000AE420047853B /* ScenarioViewController.swift */; };
 		14F7D9F83000AE420047853B /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9EF3000AE420047853B /* FriendListViewController.swift */; };
 		14F7D9F93000AE420047853B /* KKAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9E73000AE420047853B /* KKAvatarView.swift */; };
-		14F7D9FA3000AE420047853B /* InvitationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9ED3000AE420047853B /* InvitationHeaderView.swift */; };
 		14F7D9FB3000AE420047853B /* FriendListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9F33000AE420047853B /* FriendListViewModel.swift */; };
 		14F7D9FC3000AE420047853B /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9E33000AE420047853B /* FriendCell.swift */; };
 		14F7D9FD3000AE420047853B /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9F03000AE420047853B /* MainTabBarController.swift */; };
@@ -71,6 +72,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14A276653002813D00DAACAB /* InvitationCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationCardsView.swift; sourceTree = "<group>"; };
+		14A276663002813D00DAACAB /* SingleInvitationCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleInvitationCardView.swift; sourceTree = "<group>"; };
 		14F7D9722FFF7A520047853B /* UIColor+KK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+KK.swift"; sourceTree = "<group>"; };
 		14F7D99D3000AA0C0047853B /* FriendDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDTO.swift; sourceTree = "<group>"; };
 		14F7D99E3000AA0C0047853B /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
@@ -99,7 +102,6 @@
 		14F7D9E73000AE420047853B /* KKAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKAvatarView.swift; sourceTree = "<group>"; };
 		14F7D9EB3000AE420047853B /* EmptyFriendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyFriendView.swift; sourceTree = "<group>"; };
 		14F7D9EC3000AE420047853B /* FriendListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListView.swift; sourceTree = "<group>"; };
-		14F7D9ED3000AE420047853B /* InvitationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationHeaderView.swift; sourceTree = "<group>"; };
 		14F7D9EF3000AE420047853B /* FriendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
 		14F7D9F03000AE420047853B /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		14F7D9F13000AE420047853B /* ScenarioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14A276673002813D00DAACAB /* Invitation */ = {
+			isa = PBXGroup;
+			children = (
+				14A276653002813D00DAACAB /* InvitationCardsView.swift */,
+				14A276663002813D00DAACAB /* SingleInvitationCardView.swift */,
+			);
+			path = Invitation;
+			sourceTree = "<group>";
+		};
 		14F7D9742FFF92750047853B /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -268,7 +279,7 @@
 			children = (
 				14F7D9EB3000AE420047853B /* EmptyFriendView.swift */,
 				14F7D9EC3000AE420047853B /* FriendListView.swift */,
-				14F7D9ED3000AE420047853B /* InvitationHeaderView.swift */,
+				14A276673002813D00DAACAB /* Invitation */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -525,7 +536,6 @@
 				14F7D9F73000AE420047853B /* ScenarioViewController.swift in Sources */,
 				14F7D9F83000AE420047853B /* FriendListViewController.swift in Sources */,
 				14F7D9F93000AE420047853B /* KKAvatarView.swift in Sources */,
-				14F7D9FA3000AE420047853B /* InvitationHeaderView.swift in Sources */,
 				14F7D9FB3000AE420047853B /* FriendListViewModel.swift in Sources */,
 				14F7D9FC3000AE420047853B /* FriendCell.swift in Sources */,
 				14F7D9FD3000AE420047853B /* MainTabBarController.swift in Sources */,
@@ -543,6 +553,8 @@
 				14F7D9BE3000AA0C0047853B /* FriendDTO.swift in Sources */,
 				14F7D9C03000AA0C0047853B /* UserAPI.swift in Sources */,
 				14F7D9C13000AA0C0047853B /* UserCoreData.swift in Sources */,
+				14A276683002813D00DAACAB /* InvitationCardsView.swift in Sources */,
+				14A276693002813D00DAACAB /* SingleInvitationCardView.swift in Sources */,
 				14F7D9C23000AA0C0047853B /* FriendRepository.swift in Sources */,
 				14F7D9C33000AA0C0047853B /* FriendCacheKey.swift in Sources */,
 				14F7D9C43000AA0C0047853B /* UserRepository.swift in Sources */,
@@ -774,7 +786,7 @@
 				DEVELOPMENT_TEAM = PW5NAYWBLM;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = KOKOTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.koko.iosloloTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -794,7 +806,7 @@
 				DEVELOPMENT_TEAM = PW5NAYWBLM;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = KOKOTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.koko.iosloloTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
