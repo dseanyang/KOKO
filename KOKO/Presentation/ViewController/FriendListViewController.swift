@@ -100,6 +100,18 @@ class FriendListViewController: UIViewController {
             with: state.invitations,
             isExpanded: state.isInvitationExpanded
         )
+        contentView.invitationCardsView.layoutIfNeeded()
+
+        if state.invitations.isEmpty {
+            contentView.invitationCardsHeightConstraint?.constant = 0
+        } else {
+            contentView.invitationCardsHeightConstraint?.constant =
+                contentView.invitationCardsView.requiredHeight
+        }
+
+        UIView.animate(withDuration: 0.25) {
+            self.contentView.layoutIfNeeded()
+        }
     }
 
     private func renderSearch(_ state: FriendListViewState) {
@@ -173,13 +185,9 @@ class FriendListViewController: UIViewController {
         contentView.addFriendsButtonWidthConstraint?.isActive = false
         contentView.addFriendsButtonWidthConstraint = contentView.addFriendsButton.widthAnchor.constraint(equalToConstant: 0)
         contentView.addFriendsButtonWidthConstraint?.isActive = true
+        
+        contentView.invitationCardsHeightConstraint?.constant = 0
 
-        // Capture current height of invitationCardsView before collapsing
-        let cardsHeight = contentView.invitationCardsView.frame.height
-        contentView.invitationCardsHeightConstraint?.isActive = false
-        contentView.invitationCardsHeightConstraint = contentView.invitationCardsView.heightAnchor.constraint(equalToConstant: 0)
-        contentView.invitationCardsHeightConstraint?.isActive = true
-        _ = cardsHeight // suppress warning
 
         UIView.animate(withDuration: 0.35, delay: 0, usingSpringWithDamping: 0.85, initialSpringVelocity: 0.5) {
             self.contentView.cancelSearchButton.alpha = 1
@@ -212,9 +220,8 @@ class FriendListViewController: UIViewController {
         contentView.addFriendsButtonWidthConstraint = contentView.addFriendsButton.widthAnchor.constraint(equalToConstant: 36)
         contentView.addFriendsButtonWidthConstraint?.isActive = true
 
-        // Remove the zero-height override so cards can expand back to natural size
-        contentView.invitationCardsHeightConstraint?.isActive = false
-        contentView.invitationCardsHeightConstraint = nil
+        contentView.invitationCardsHeightConstraint?.constant =
+            contentView.invitationCardsView.requiredHeight
 
         UIView.animate(withDuration: 0.35, delay: 0, usingSpringWithDamping: 0.85, initialSpringVelocity: 0.5) {
             self.contentView.cancelSearchButton.alpha = 0
