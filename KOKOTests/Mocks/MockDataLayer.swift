@@ -1,36 +1,40 @@
 import Foundation
 @testable import KOKO
 
+enum MockCacheError: Error {
+    case unavailable
+}
+
 final class MockFriendAPI: FriendAPIProtocol {
-    var stubbedList1: [Friend] = []
-    var stubbedList2: [Friend] = []
-    var stubbedList3: [Friend] = []
-    var stubbedList4: [Friend] = []
+    var stubbedList1: [FriendDTO] = []
+    var stubbedList2: [FriendDTO] = []
+    var stubbedList3: [FriendDTO] = []
+    var stubbedList4: [FriendDTO] = []
     var errorToThrow: Error?
 
-    func fetchFriendList1() async throws -> [Friend] {
+    func fetchFriendList1() async throws -> [FriendDTO] {
         if let error = errorToThrow { throw error }
         return stubbedList1
     }
-    func fetchFriendList2() async throws -> [Friend] {
+    func fetchFriendList2() async throws -> [FriendDTO] {
         if let error = errorToThrow { throw error }
         return stubbedList2
     }
-    func fetchFriendList3() async throws -> [Friend] {
+    func fetchFriendList3() async throws -> [FriendDTO] {
         if let error = errorToThrow { throw error }
         return stubbedList3
     }
-    func fetchFriendList4() async throws -> [Friend] {
+    func fetchFriendList4() async throws -> [FriendDTO] {
         if let error = errorToThrow { throw error }
         return stubbedList4
     }
 }
 
 final class MockUserAPI: UserAPIProtocol {
-    var stubbedUser: [User] = []
+    var stubbedUser: [UserDTO] = []
     var errorToThrow: Error?
 
-    func fetchUser() async throws -> [User] {
+    func fetchUser() async throws -> [UserDTO] {
         if let error = errorToThrow { throw error }
         return stubbedUser
     }
@@ -39,16 +43,20 @@ final class MockUserAPI: UserAPIProtocol {
 final class MockFriendLocalDataSource: FriendLocalDataSourceProtocol {
     var savedFriends: [FriendCacheKey: [Friend]] = [:]
     var clearCacheCallCount = 0
+    var errorToThrow: Error?
 
-    func fetchFriends(cacheKey: FriendCacheKey) -> [Friend]? {
-        savedFriends[cacheKey]
+    func fetchFriends(cacheKey: FriendCacheKey) throws -> [Friend]? {
+        if let errorToThrow { throw errorToThrow }
+        return savedFriends[cacheKey]
     }
 
-    func saveFriends(_ friends: [Friend], cacheKey: FriendCacheKey) {
+    func saveFriends(_ friends: [Friend], cacheKey: FriendCacheKey) throws {
+        if let errorToThrow { throw errorToThrow }
         savedFriends[cacheKey] = friends
     }
 
-    func clearCache() {
+    func clearCache() throws {
+        if let errorToThrow { throw errorToThrow }
         clearCacheCallCount += 1
         savedFriends.removeAll()
     }
@@ -57,16 +65,20 @@ final class MockFriendLocalDataSource: FriendLocalDataSourceProtocol {
 final class MockUserLocalDataSource: UserLocalDataSourceProtocol {
     var savedUser: User?
     var clearCacheCallCount = 0
+    var errorToThrow: Error?
 
-    func fetchUser() -> User? {
-        savedUser
+    func fetchUser() throws -> User? {
+        if let errorToThrow { throw errorToThrow }
+        return savedUser
     }
 
-    func saveUser(_ user: User) {
+    func saveUser(_ user: User) throws {
+        if let errorToThrow { throw errorToThrow }
         savedUser = user
     }
 
-    func clearCache() {
+    func clearCache() throws {
+        if let errorToThrow { throw errorToThrow }
         clearCacheCallCount += 1
         savedUser = nil
     }
