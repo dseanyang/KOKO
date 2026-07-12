@@ -1,11 +1,6 @@
 import Foundation
 import os
 
-protocol UserRepositoryProtocol {
-    func fetchUser() async throws -> User
-    func clearCache()
-}
-
 final class UserRepository: UserRepositoryProtocol {
 
     private static let logger = Logger(subsystem: "com.koko.ioskoko", category: "UserRepository")
@@ -21,7 +16,8 @@ final class UserRepository: UserRepositoryProtocol {
 
     func fetchUser() async throws -> User {
         do {
-            let users = try await remoteDataSource.fetchUser()
+            let userDTOs = try await remoteDataSource.fetchUser()
+            let users = userDTOs.map(UserMapper.map)
             guard let user = users.first else { throw APIError.noData }
             do {
                 try localDataSource.saveUser(user)

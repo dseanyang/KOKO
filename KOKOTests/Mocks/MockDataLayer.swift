@@ -6,35 +6,35 @@ enum MockCacheError: Error {
 }
 
 final class MockFriendAPI: FriendAPIProtocol {
-    var stubbedList1: [Friend] = []
-    var stubbedList2: [Friend] = []
-    var stubbedList3: [Friend] = []
-    var stubbedList4: [Friend] = []
+    var stubbedList1: [FriendDTO] = []
+    var stubbedList2: [FriendDTO] = []
+    var stubbedList3: [FriendDTO] = []
+    var stubbedList4: [FriendDTO] = []
     var errorToThrow: Error?
 
-    func fetchFriendList1() async throws -> [Friend] {
+    func fetchFriendList1() async throws -> [FriendDTO] {
         if let error = errorToThrow { throw error }
         return stubbedList1
     }
-    func fetchFriendList2() async throws -> [Friend] {
+    func fetchFriendList2() async throws -> [FriendDTO] {
         if let error = errorToThrow { throw error }
         return stubbedList2
     }
-    func fetchFriendList3() async throws -> [Friend] {
+    func fetchFriendList3() async throws -> [FriendDTO] {
         if let error = errorToThrow { throw error }
         return stubbedList3
     }
-    func fetchFriendList4() async throws -> [Friend] {
+    func fetchFriendList4() async throws -> [FriendDTO] {
         if let error = errorToThrow { throw error }
         return stubbedList4
     }
 }
 
 final class MockUserAPI: UserAPIProtocol {
-    var stubbedUser: [User] = []
+    var stubbedUser: [UserDTO] = []
     var errorToThrow: Error?
 
-    func fetchUser() async throws -> [User] {
+    func fetchUser() async throws -> [UserDTO] {
         if let error = errorToThrow { throw error }
         return stubbedUser
     }

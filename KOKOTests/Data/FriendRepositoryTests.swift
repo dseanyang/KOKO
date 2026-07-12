@@ -44,7 +44,7 @@ final class FriendRepositoryTests: XCTestCase {
     }
 
     func test_fetchFriendList1_success_savesToCache() async throws {
-        let remoteFriends = [Friend(fid: "1", name: "Remote", status: 1, isTop: "0", updateDate: "")]
+        let remoteFriends = [FriendDTO(name: "Remote", status: 1, isTop: "0", fid: "1", updateDate: "")]
         mockAPI.stubbedList1 = remoteFriends
         
         let result = try await sut.fetchFriendList1()
@@ -76,7 +76,7 @@ final class FriendRepositoryTests: XCTestCase {
     }
 
     func test_fetchFriendList1_cacheWriteFailure_stillReturnsRemoteData() async throws {
-        let remoteFriends = [Friend(fid: "1", name: "Remote", status: 1, isTop: "0", updateDate: "")]
+        let remoteFriends = [FriendDTO(name: "Remote", status: 1, isTop: "0", fid: "1", updateDate: "")]
         mockAPI.stubbedList1 = remoteFriends
         mockLocal.errorToThrow = MockCacheError.unavailable
 
