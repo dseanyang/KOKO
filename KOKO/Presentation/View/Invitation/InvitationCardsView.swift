@@ -67,6 +67,9 @@ class InvitationCardsView: UIView {
     
     private func setup() {
         backgroundColor = .hotGrey
+        // The view starts with no invitation data. Hide its placeholder shadow card
+        // until configure(with:isExpanded:) receives at least one invitation.
+        isHidden = true
         addSubview(backgroundShadowCard)
 
         addSubview(scrollView)
@@ -77,12 +80,20 @@ class InvitationCardsView: UIView {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         addGestureRecognizer(tap)
         
-        NSLayoutConstraint.activate([
+        let scrollViewBottomConstraint = scrollView.bottomAnchor.constraint(
+            equalTo: bottomAnchor,
+            constant: -20
+        )
+        // The parent deliberately uses a zero height while there are no invitations.
+        // Allow this internal spacing constraint to yield in that state without
+        // affecting the normal, visible-card layout.
+        scrollViewBottomConstraint.priority = .defaultHigh
 
+        NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             scrollView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
             scrollView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30),
-            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
+            scrollViewBottomConstraint,
 
             
 
