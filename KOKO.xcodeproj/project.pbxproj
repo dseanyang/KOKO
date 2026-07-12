@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		14A276683002813D00DAACAB /* InvitationCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A276653002813D00DAACAB /* InvitationCardsView.swift */; };
 		14A276693002813D00DAACAB /* SingleInvitationCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A276663002813D00DAACAB /* SingleInvitationCardView.swift */; };
+		CC1000063000B54D0047853B /* InvitationCardsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1000073000B54D0047853B /* InvitationCardsViewTests.swift */; };
+		CC1000083000B54D0047853B /* EmptyFriendViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1000093000B54D0047853B /* EmptyFriendViewTests.swift */; };
+		14A2766B3003B66100DAACAB /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A2766A3003B66100DAACAB /* MainNavigationController.swift */; };
 		14F7D9732FFF7A520047853B /* UIColor+KK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9722FFF7A520047853B /* UIColor+KK.swift */; };
 		14F7D9B53000AA0C0047853B /* FriendMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9A93000AA0C0047853B /* FriendMapper.swift */; };
 		14F7D9B63000AA0C0047853B /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9AC3000AA0C0047853B /* APIClient.swift */; };
@@ -59,6 +62,7 @@
 		ABCD00033000AE420047853B /* FriendTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCD00043000AE420047853B /* FriendTableDataSource.swift */; };
 		ABCD00063000AE420047853B /* FriendTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCD00073000AE420047853B /* FriendTableDelegate.swift */; };
 		ABCD00083000B54D0047853B /* FriendTableDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCD00093000B54D0047853B /* FriendTableDataSourceTests.swift */; };
+		CC1000033000B54D0047853B /* KOKONavigationControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1000043000B54D0047853B /* KOKONavigationControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +78,9 @@
 /* Begin PBXFileReference section */
 		14A276653002813D00DAACAB /* InvitationCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationCardsView.swift; sourceTree = "<group>"; };
 		14A276663002813D00DAACAB /* SingleInvitationCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleInvitationCardView.swift; sourceTree = "<group>"; };
+		CC1000073000B54D0047853B /* InvitationCardsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationCardsViewTests.swift; sourceTree = "<group>"; };
+		CC1000093000B54D0047853B /* EmptyFriendViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyFriendViewTests.swift; sourceTree = "<group>"; };
+		14A2766A3003B66100DAACAB /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		14F7D9722FFF7A520047853B /* UIColor+KK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+KK.swift"; sourceTree = "<group>"; };
 		14F7D99D3000AA0C0047853B /* FriendDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDTO.swift; sourceTree = "<group>"; };
 		14F7D99E3000AA0C0047853B /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
@@ -129,6 +136,7 @@
 		ABCD00093000B54D0047853B /* FriendTableDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableDataSourceTests.swift; sourceTree = "<group>"; };
 		CC0000000000000000000001 /* KOKO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KOKO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC0000000000000000000002 /* KOKOTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KOKOTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC1000043000B54D0047853B /* KOKONavigationControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOKONavigationControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,6 +298,7 @@
 				14F7D9EF3000AE420047853B /* FriendListViewController.swift */,
 				14F7D9F03000AE420047853B /* MainTabBarController.swift */,
 				14F7D9F13000AE420047853B /* ScenarioViewController.swift */,
+				14A2766A3003B66100DAACAB /* MainNavigationController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -351,6 +360,9 @@
 			children = (
 				14F7DA153000B54D0047853B /* FriendListViewModelTests.swift */,
 				ABCD00093000B54D0047853B /* FriendTableDataSourceTests.swift */,
+				CC1000043000B54D0047853B /* KOKONavigationControllerTests.swift */,
+				CC1000073000B54D0047853B /* InvitationCardsViewTests.swift */,
+				CC1000093000B54D0047853B /* EmptyFriendViewTests.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -544,6 +556,7 @@
 				14F7D9D73000AA300047853B /* FriendSorter.swift in Sources */,
 				14F7D9D83000AA300047853B /* GetUserUseCase.swift in Sources */,
 				14F7D9D93000AA300047853B /* User.swift in Sources */,
+				14A2766B3003B66100DAACAB /* MainNavigationController.swift in Sources */,
 				14F7D9DA3000AA300047853B /* FriendMerger.swift in Sources */,
 				14F7D9DB3000AA300047853B /* FriendScenario.swift in Sources */,
 				14F7D9DC3000AA300047853B /* FriendListResult.swift in Sources */,
@@ -584,6 +597,9 @@
 				14F7DA143000B53C0047853B /* MockDataLayer.swift in Sources */,
 				14F7DA173000B54D0047853B /* FriendListViewModelTests.swift in Sources */,
 				ABCD00083000B54D0047853B /* FriendTableDataSourceTests.swift in Sources */,
+				CC1000033000B54D0047853B /* KOKONavigationControllerTests.swift in Sources */,
+				CC1000063000B54D0047853B /* InvitationCardsViewTests.swift in Sources */,
+				CC1000083000B54D0047853B /* EmptyFriendViewTests.swift in Sources */,
 				14F7DA063000B5180047853B /* UserRepositoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

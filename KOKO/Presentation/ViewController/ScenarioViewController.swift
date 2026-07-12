@@ -41,13 +41,7 @@ class ScenarioViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .kkWhite
-        navigationController?.navigationBar.isHidden = true
         setupUI()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = true
     }
 
     private func setupUI() {
@@ -146,7 +140,6 @@ class ScenarioViewController: UIViewController {
     @objc private func scenarioTapped(_ sender: UIControl) {
         guard let scenario = FriendScenario(rawValue: sender.tag) else { return }
         let vc = MainTabBarController(scenario: scenario)
-        navigationController?.navigationBar.isHidden = true
         navigationController?.pushViewController(vc, animated: true)
     }
 
