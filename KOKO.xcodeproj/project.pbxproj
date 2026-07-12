@@ -35,6 +35,7 @@
 		14F7D9DA3000AA300047853B /* FriendMerger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9CF3000AA300047853B /* FriendMerger.swift */; };
 		14F7D9DB3000AA300047853B /* FriendScenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9CC3000AA300047853B /* FriendScenario.swift */; };
 		14F7D9DC3000AA300047853B /* FriendListResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9CB3000AA300047853B /* FriendListResult.swift */; };
+		D0A100000000000000000002 /* RepositoryProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A100000000000000000001 /* RepositoryProtocols.swift */; };
 		14F7D9F63000AE420047853B /* FriendListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9EC3000AE420047853B /* FriendListView.swift */; };
 		14F7D9F73000AE420047853B /* ScenarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9F13000AE420047853B /* ScenarioViewController.swift */; };
 		14F7D9F83000AE420047853B /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9EF3000AE420047853B /* FriendListViewController.swift */; };
@@ -104,6 +105,7 @@
 		14F7D9D03000AA300047853B /* FriendSorter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSorter.swift; sourceTree = "<group>"; };
 		14F7D9D13000AA300047853B /* GetFriendListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFriendListUseCase.swift; sourceTree = "<group>"; };
 		14F7D9D23000AA300047853B /* GetUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserUseCase.swift; sourceTree = "<group>"; };
+		D0A100000000000000000001 /* RepositoryProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryProtocols.swift; sourceTree = "<group>"; };
 		14F7D9E33000AE420047853B /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		14F7D9E43000AE420047853B /* InvitationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationCell.swift; sourceTree = "<group>"; };
 		14F7D9E73000AE420047853B /* KKAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKAvatarView.swift; sourceTree = "<group>"; };
@@ -256,10 +258,19 @@
 			path = UseCases;
 			sourceTree = "<group>";
 		};
+		D0A100000000000000000003 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				D0A100000000000000000001 /* RepositoryProtocols.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
 		14F7D9D43000AA300047853B /* Domain */ = {
 			isa = PBXGroup;
 			children = (
 				14F7D9CE3000AA300047853B /* Entities */,
+				D0A100000000000000000003 /* Repositories */,
 				14F7D9D33000AA300047853B /* UseCases */,
 			);
 			path = Domain;
@@ -560,6 +571,7 @@
 				14F7D9DA3000AA300047853B /* FriendMerger.swift in Sources */,
 				14F7D9DB3000AA300047853B /* FriendScenario.swift in Sources */,
 				14F7D9DC3000AA300047853B /* FriendListResult.swift in Sources */,
+				D0A100000000000000000002 /* RepositoryProtocols.swift in Sources */,
 				14F7D9B63000AA0C0047853B /* APIClient.swift in Sources */,
 				14F7D9B83000AA0C0047853B /* UserMapper.swift in Sources */,
 				14F7D9BC3000AA0C0047853B /* FriendCoreData.swift in Sources */,

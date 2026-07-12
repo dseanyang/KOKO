@@ -22,12 +22,13 @@ final class UserRepositoryTests: XCTestCase {
     }
 
     func test_fetchUser_success_savesToCache() async throws {
-        let remoteUser = User(name: "Remote", kokoid: "remote")
+        let remoteUser = UserDTO(name: "Remote", kokoid: "remote")
         mockAPI.stubbedUser = [remoteUser]
         
         let result = try await sut.fetchUser()
         
         XCTAssertEqual(result.name, "Remote")
+        XCTAssertEqual(result.kokoid, "remote")
         XCTAssertEqual(mockLocal.savedUser?.name, "Remote")
     }
 
@@ -59,5 +60,15 @@ final class UserRepositoryTests: XCTestCase {
         } catch {
             XCTAssertNotNil(error)
         }
+    }
+
+    func test_fetchUser_cacheWriteFailure_stillReturnsRemoteData() async throws {
+        let remoteUser = UserDTO(name: "Remote", kokoid: "remote")
+        mockAPI.stubbedUser = [remoteUser]
+        mockLocal.errorToThrow = MockCacheError.unavailable
+
+        let result = try await sut.fetchUser()
+
+        XCTAssertEqual(result.name, "Remote")
     }
 }

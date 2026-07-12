@@ -1,11 +1,9 @@
 import Foundation
-
-protocol UserRepositoryProtocol {
-    func fetchUser() async throws -> User
-    func clearCache()
-}
+import os
 
 final class UserRepository: UserRepositoryProtocol {
+
+    private static let logger = Logger(subsystem: "com.koko.ioskoko", category: "UserRepository")
 
     private let remoteDataSource: UserAPIProtocol
     private let localDataSource: UserLocalDataSourceProtocol
@@ -18,20 +16,30 @@ final class UserRepository: UserRepositoryProtocol {
 
     func fetchUser() async throws -> User {
         do {
-            let users = try await remoteDataSource.fetchUser()
-            guard let user = users.first else {
-                if let cached = localDataSource.fetchUser() { return cached }
-                throw APIError.noData
+            let userDTOs = try await remoteDataSource.fetchUser()
+            let users = userDTOs.map(UserMapper.map)
+            guard let user = users.first else { throw APIError.noData }
+            do {
+                try localDataSource.saveUser(user)
+            } catch {
+                Self.logger.error("Failed to save user cache: \(error.localizedDescription, privacy: .public)")
             }
-            localDataSource.saveUser(user)
             return user
         } catch {
-            if let cached = localDataSource.fetchUser() { return cached }
+            do {
+                if let cached = try localDataSource.fetchUser() { return cached }
+            } catch {
+                Self.logger.error("Failed to read user cache: \(error.localizedDescription, privacy: .public)")
+            }
             throw error
         }
     }
 
     func clearCache() {
-        localDataSource.clearCache()
+        do {
+            try localDataSource.clearCache()
+        } catch {
+            Self.logger.error("Failed to clear user cache: \(error.localizedDescription, privacy: .public)")
+        }
     }
 }

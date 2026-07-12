@@ -1,9 +1,12 @@
 import Foundation
 import CoreData
+import os
 
 final class CoreDataManager {
     static let shared = CoreDataManager()
     private init() {}
+
+    private let logger = Logger(subsystem: "com.koko.ioskoko", category: "CoreData")
 
     let persistentContainer: NSPersistentContainer = {
         let model = NSManagedObjectModel()
@@ -14,7 +17,8 @@ final class CoreDataManager {
         let container = NSPersistentContainer(name: "FriendListCache", managedObjectModel: model)
         container.loadPersistentStores { _, error in
             if let error = error {
-                print("Core Data failed to load: \(error)")
+                Logger(subsystem: "com.koko.ioskoko", category: "CoreData")
+                    .error("Failed to load persistent store: \(error.localizedDescription, privacy: .public)")
             }
         }
         return container
@@ -25,38 +29,56 @@ final class CoreDataManager {
     }
 
 
-    func fetch<T: NSManagedObject>(entityName: String, predicate: NSPredicate? = nil) -> [T] {
-        var results: [T] = []
+    func fetch<T: NSManagedObject>(entityName: String, predicate: NSPredicate? = nil) throws -> [T] {
+        var result: Result<[T], Error> = .success([])
         let ctx = context
         ctx.performAndWait {
             let request = NSFetchRequest<T>(entityName: entityName)
             request.predicate = predicate
-            if let fetched = try? ctx.fetch(request) {
-                results = fetched
+            do {
+                result = .success(try ctx.fetch(request))
+            } catch {
+                result = .failure(error)
             }
         }
-        return results
+        return try result.get()
     }
 
-    func delete(entityName: String, predicate: NSPredicate? = nil) {
+    func delete(entityName: String, predicate: NSPredicate? = nil) throws {
+        var result: Result<Void, Error> = .success(())
         let ctx = context
         ctx.performAndWait {
             let request = NSFetchRequest<NSManagedObject>(entityName: entityName)
             request.predicate = predicate
-            if let fetched = try? ctx.fetch(request) {
+            do {
+                let fetched = try ctx.fetch(request)
                 fetched.forEach { ctx.delete($0) }
+                try ctx.save()
+            } catch {
+                result = .failure(error)
             }
-            try? ctx.save()
         }
+        try result.get()
     }
 
-    func save(_ block: (NSManagedObjectContext) -> Void) {
+    func save(_ block: (NSManagedObjectContext) -> Void) throws {
+        var result: Result<Void, Error> = .success(())
         let ctx = context
         ctx.performAndWait {
             block(ctx)
             if ctx.hasChanges {
-                try? ctx.save()
+                do {
+                    try ctx.save()
+                } catch {
+                    result = .failure(error)
+                }
             }
+        }
+        do {
+            try result.get()
+        } catch {
+            logger.error("Failed to save cache data: \(error.localizedDescription, privacy: .public)")
+            throw error
         }
     }
 }

@@ -31,30 +31,30 @@ public class CDUser: NSManagedObject {
 }
 
 protocol UserLocalDataSourceProtocol {
-    func fetchUser() -> User?
-    func saveUser(_ user: User)
-    func clearCache()
+    func fetchUser() throws -> User?
+    func saveUser(_ user: User) throws
+    func clearCache() throws
 }
 
 final class UserCoreData: UserLocalDataSourceProtocol {
 
     private let manager = CoreDataManager.shared
 
-    func fetchUser() -> User? {
-        let cdUsers: [CDUser] = manager.fetch(entityName: "CDUser")
+    func fetchUser() throws -> User? {
+        let cdUsers: [CDUser] = try manager.fetch(entityName: "CDUser")
         return cdUsers.first?.toUser()
     }
 
-    func saveUser(_ user: User) {
-        manager.delete(entityName: "CDUser")
-        manager.save { context in
+    func saveUser(_ user: User) throws {
+        try manager.delete(entityName: "CDUser")
+        try manager.save { context in
             let cdUser = CDUser(context: context)
             cdUser.name   = user.name
             cdUser.kokoid = user.kokoid
         }
     }
 
-    func clearCache() {
-        manager.delete(entityName: "CDUser")
+    func clearCache() throws {
+        try manager.delete(entityName: "CDUser")
     }
 }

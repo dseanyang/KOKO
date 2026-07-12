@@ -1,7 +1,7 @@
 import Foundation
 
 protocol UserAPIProtocol {
-    func fetchUser() async throws -> [User]
+    func fetchUser() async throws -> [UserDTO]
 }
 
 final class UserAPI: UserAPIProtocol {
@@ -11,8 +11,8 @@ final class UserAPI: UserAPIProtocol {
         self.client = client
     }
 
-    func fetchUser() async throws -> [User] {
+    func fetchUser() async throws -> [UserDTO] {
         let response: UserResponseDTO = try await client.request(.user)
-        return response.response.map(UserMapper.map)
+        return response.response
     }
 }

@@ -23,7 +23,7 @@ KOKO 是一個展示金融錢包「好友列表」功能的 iOS 應用程式。
 
 ## 整體架構
 
-本專案採用分層式 Clean Architecture 搭配 MVVM 與 Repository Pattern。畫面層只負責互動與渲染，商業規則集中在 Domain 層，資料讀取與快取則由 Data 層處理。
+本專案採用分層式 Clean Architecture 搭配 MVVM 與 Repository Pattern。畫面層只負責互動與渲染；Domain 層定義商業規則與資料存取 contract；Data 層實作 contract、處理 DTO 與快取。
 
 ```mermaid
 flowchart TB
@@ -42,6 +42,8 @@ flowchart TB
     subgraph Domain["Domain Layer（商業規則）"]
       UC1["GetFriendListUseCase"]
       UC2["GetUserUseCase"]
+      RepoContractF["FriendRepositoryProtocol"]
+      RepoContractU["UserRepositoryProtocol"]
       Merge["FriendMerger<br/>依 fid 合併、保留較新資料"]
       Sort["FriendSorter<br/>邀請中 → 星號 → 名稱排序"]
       Entities["Friend / User / FriendScenario<br/>FriendListResult"]
@@ -51,21 +53,28 @@ flowchart TB
     VM --> UC2
     UC1 --> Merge
     UC1 --> Sort
-    UC1 --> RepoF["FriendRepository"]
-    UC2 --> RepoU["UserRepository"]
+    UC1 --> RepoContractF
+    UC2 --> RepoContractU
 
-    subgraph Data["Data Layer（資料取得與快取）"]
-      RepoF --> APIF["FriendAPI"]
+    subgraph Data["Data Layer（contract 實作、DTO 與快取）"]
+      RepoF["FriendRepository"]
+      RepoU["UserRepository"]
+      RepoF --> APIF["FriendAPI<br/>回傳 FriendDTO"]
       RepoF --> CacheF["FriendCoreData"]
-      RepoU --> APIU["UserAPI"]
+      RepoF --> MapperF["FriendMapper"]
+      RepoU --> APIU["UserAPI<br/>回傳 UserDTO"]
       RepoU --> CacheU["UserCoreData"]
+      RepoU --> MapperU["UserMapper"]
       APIF --> Client["APIClient + Endpoint"]
       APIU --> Client
-      APIF --> MapperF["FriendMapper / DTO"]
-      APIU --> MapperU["UserMapper / DTO"]
       CacheF --> CoreData["CoreDataManager"]
       CacheU --> CoreData
     end
+
+    RepoF -. 實作 .-> RepoContractF
+    RepoU -. 實作 .-> RepoContractU
+    MapperF --> Entities
+    MapperU --> Entities
 
     Client --> Remote["Remote JSON API<br/>dimanyen.github.io"]
     CoreData --> Local["Core Data 本機持久化快取"]
@@ -81,7 +90,7 @@ flowchart TB
 | --- | --- |
 | App 啟動與導航 | 建立視窗、初始情境頁、導航列與 Tab Bar；`MainTabBarController` 負責組裝相依物件。 |
 | Presentation | 接收 UI 事件、顯示載入／錯誤／空狀態、處理搜尋與邀請卡互動；透過 ViewModel 的單一 State 渲染畫面。 |
-| Domain | 定義 `Friend`、`User` 等商業模型，選擇資料情境、執行好友去重與排序等規則。 |
-| Data | 下載 JSON、DTO 與 Entity 轉換、執行 network-first 策略，並在網路失敗時改讀 Core Data 快取。 |
+| Domain | 定義 `Friend`、`User` 等商業模型、Repository contract、資料情境與好友去重／排序規則。 |
+| Data | 實作 Domain 的 Repository contract；下載 JSON、維持 DTO、轉成 Entity，並執行 network-first 與 Core Data fallback。 |
 | Utilities / Resources | 提供日期解析、色彩設定與圖像資源等跨層支援。 |
 | Tests | 使用 protocol 注入 mocks，驗證 Data、Domain 與 Presentation 的行為。 |

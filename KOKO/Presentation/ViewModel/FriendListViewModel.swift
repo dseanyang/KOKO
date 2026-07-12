@@ -27,6 +27,7 @@ final class FriendListViewModel {
     // MARK: - Dependencies
     private let getFriendListUseCase: GetFriendListUseCaseProtocol
     private let getUserUseCase: GetUserUseCaseProtocol
+    private let searchDebounceDelay: DispatchQueue.SchedulerTimeType.Stride
 
     private var loadTask: Task<Void, Never>?
     
@@ -37,11 +38,13 @@ final class FriendListViewModel {
     init(
         getFriendListUseCase: GetFriendListUseCaseProtocol,
         getUserUseCase: GetUserUseCaseProtocol,
-        scenario: FriendScenario
+        scenario: FriendScenario,
+        searchDebounceDelay: DispatchQueue.SchedulerTimeType.Stride = .milliseconds(300)
     ) {
         self.getFriendListUseCase = getFriendListUseCase
         self.getUserUseCase = getUserUseCase
         self.currentScenario = scenario
+        self.searchDebounceDelay = searchDebounceDelay
         
         setupSearchDebounce()
     }
@@ -49,7 +52,7 @@ final class FriendListViewModel {
     private func setupSearchDebounce() {
         $searchText
             .dropFirst()
-            .debounce(for: .milliseconds(300), scheduler: DispatchQueue.main)
+            .debounce(for: searchDebounceDelay, scheduler: DispatchQueue.main)
             .removeDuplicates()
             .sink { [weak self] text in
                 self?.debouncedSearchText = text
