@@ -60,4 +60,14 @@ final class UserRepositoryTests: XCTestCase {
             XCTAssertNotNil(error)
         }
     }
+
+    func test_fetchUser_cacheWriteFailure_stillReturnsRemoteData() async throws {
+        let remoteUser = User(name: "Remote", kokoid: "remote")
+        mockAPI.stubbedUser = [remoteUser]
+        mockLocal.errorToThrow = MockCacheError.unavailable
+
+        let result = try await sut.fetchUser()
+
+        XCTAssertEqual(result.name, "Remote")
+    }
 }

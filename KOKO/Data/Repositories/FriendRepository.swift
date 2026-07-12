@@ -1,4 +1,5 @@
 import Foundation
+import os
 
 protocol FriendRepositoryProtocol {
     func fetchFriendList1() async throws -> [Friend]
@@ -9,6 +10,8 @@ protocol FriendRepositoryProtocol {
 }
 
 final class FriendRepository: FriendRepositoryProtocol {
+
+    private static let logger = Logger(subsystem: "com.koko.ioskoko", category: "FriendRepository")
 
     private let remoteDataSource: FriendAPIProtocol
     private let localDataSource: FriendLocalDataSourceProtocol
@@ -37,19 +40,30 @@ final class FriendRepository: FriendRepositoryProtocol {
     }
 
     func clearCache() {
-        localDataSource.clearCache()
+        do {
+            try localDataSource.clearCache()
+        } catch {
+            Self.logger.error("Failed to clear friend cache: \(error.localizedDescription, privacy: .public)")
+        }
     }
 
 
     private func fetch(remote: () async throws -> [Friend], cacheKey: FriendCacheKey) async throws -> [Friend] {
         do {
             let friends = try await remote()
-            
-            localDataSource.saveFriends(friends, cacheKey: cacheKey)
+            do {
+                try localDataSource.saveFriends(friends, cacheKey: cacheKey)
+            } catch {
+                Self.logger.error("Failed to save friend cache: \(error.localizedDescription, privacy: .public)")
+            }
             return friends
         } catch {
-            if let cached = localDataSource.fetchFriends(cacheKey: cacheKey) {
-                return cached
+            do {
+                if let cached = try localDataSource.fetchFriends(cacheKey: cacheKey) {
+                    return cached
+                }
+            } catch {
+                Self.logger.error("Failed to read friend cache: \(error.localizedDescription, privacy: .public)")
             }
             throw error
         }

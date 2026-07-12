@@ -55,26 +55,26 @@ public class CDFriend: NSManagedObject {
 }
 
 protocol FriendLocalDataSourceProtocol {
-    func fetchFriends(cacheKey: FriendCacheKey) -> [Friend]?
-    func saveFriends(_ friends: [Friend], cacheKey: FriendCacheKey)
-    func clearCache()
+    func fetchFriends(cacheKey: FriendCacheKey) throws -> [Friend]?
+    func saveFriends(_ friends: [Friend], cacheKey: FriendCacheKey) throws
+    func clearCache() throws
 }
 
 final class FriendCoreData: FriendLocalDataSourceProtocol {
 
     private let manager = CoreDataManager.shared
 
-    func fetchFriends(cacheKey: FriendCacheKey) -> [Friend]? {
+    func fetchFriends(cacheKey: FriendCacheKey) throws -> [Friend]? {
         let predicate = NSPredicate(format: "scenarioID == %d", cacheKey.rawValue)
-        let cdFriends: [CDFriend] = manager.fetch(entityName: "CDFriend", predicate: predicate)
+        let cdFriends: [CDFriend] = try manager.fetch(entityName: "CDFriend", predicate: predicate)
         guard !cdFriends.isEmpty else { return nil }
         return cdFriends.map { $0.toFriend() }
     }
 
-    func saveFriends(_ friends: [Friend], cacheKey: FriendCacheKey) {
+    func saveFriends(_ friends: [Friend], cacheKey: FriendCacheKey) throws {
         let predicate = NSPredicate(format: "scenarioID == %d", cacheKey.rawValue)
-        manager.delete(entityName: "CDFriend", predicate: predicate)
-        manager.save { context in
+        try manager.delete(entityName: "CDFriend", predicate: predicate)
+        try manager.save { context in
             for friend in friends {
                 let cdFriend = CDFriend(context: context)
                 cdFriend.fid        = friend.fid
@@ -87,7 +87,7 @@ final class FriendCoreData: FriendLocalDataSourceProtocol {
         }
     }
 
-    func clearCache() {
-        manager.delete(entityName: "CDFriend")
+    func clearCache() throws {
+        try manager.delete(entityName: "CDFriend")
     }
 }

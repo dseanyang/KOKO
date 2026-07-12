@@ -1,6 +1,10 @@
 import Foundation
 @testable import KOKO
 
+enum MockCacheError: Error {
+    case unavailable
+}
+
 final class MockFriendAPI: FriendAPIProtocol {
     var stubbedList1: [Friend] = []
     var stubbedList2: [Friend] = []
@@ -39,16 +43,20 @@ final class MockUserAPI: UserAPIProtocol {
 final class MockFriendLocalDataSource: FriendLocalDataSourceProtocol {
     var savedFriends: [FriendCacheKey: [Friend]] = [:]
     var clearCacheCallCount = 0
+    var errorToThrow: Error?
 
-    func fetchFriends(cacheKey: FriendCacheKey) -> [Friend]? {
-        savedFriends[cacheKey]
+    func fetchFriends(cacheKey: FriendCacheKey) throws -> [Friend]? {
+        if let errorToThrow { throw errorToThrow }
+        return savedFriends[cacheKey]
     }
 
-    func saveFriends(_ friends: [Friend], cacheKey: FriendCacheKey) {
+    func saveFriends(_ friends: [Friend], cacheKey: FriendCacheKey) throws {
+        if let errorToThrow { throw errorToThrow }
         savedFriends[cacheKey] = friends
     }
 
-    func clearCache() {
+    func clearCache() throws {
+        if let errorToThrow { throw errorToThrow }
         clearCacheCallCount += 1
         savedFriends.removeAll()
     }
@@ -57,16 +65,20 @@ final class MockFriendLocalDataSource: FriendLocalDataSourceProtocol {
 final class MockUserLocalDataSource: UserLocalDataSourceProtocol {
     var savedUser: User?
     var clearCacheCallCount = 0
+    var errorToThrow: Error?
 
-    func fetchUser() -> User? {
-        savedUser
+    func fetchUser() throws -> User? {
+        if let errorToThrow { throw errorToThrow }
+        return savedUser
     }
 
-    func saveUser(_ user: User) {
+    func saveUser(_ user: User) throws {
+        if let errorToThrow { throw errorToThrow }
         savedUser = user
     }
 
-    func clearCache() {
+    func clearCache() throws {
+        if let errorToThrow { throw errorToThrow }
         clearCacheCallCount += 1
         savedUser = nil
     }
