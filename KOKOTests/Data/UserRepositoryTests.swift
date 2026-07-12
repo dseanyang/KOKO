@@ -28,6 +28,7 @@ final class UserRepositoryTests: XCTestCase {
         let result = try await sut.fetchUser()
         
         XCTAssertEqual(result.name, "Remote")
+        XCTAssertEqual(result.kokoid, "remote")
         XCTAssertEqual(mockLocal.savedUser?.name, "Remote")
     }
 

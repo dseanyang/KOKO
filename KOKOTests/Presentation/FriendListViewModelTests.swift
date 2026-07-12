@@ -117,6 +117,10 @@ final class FriendListViewModelTests: XCTestCase {
     }
 
     func test_friendsOnlyScenario_showsSearchBar() async {
+        mockFriendUseCase.stubbedResult = FriendListResult(
+            friends: [Friend(fid: "1", name: "Alice", status: 1, isTop: "0", updateDate: "")],
+            invitations: []
+        )
         sut = FriendListViewModel(
             getFriendListUseCase: mockFriendUseCase,
             getUserUseCase: mockUserUseCase,

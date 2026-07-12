@@ -50,6 +50,8 @@ final class FriendRepositoryTests: XCTestCase {
         let result = try await sut.fetchFriendList1()
         
         XCTAssertEqual(result.first?.name, "Remote")
+        XCTAssertEqual(result.first?.fid, "1")
+        XCTAssertEqual(result.first?.friendStatus, .completed)
         XCTAssertEqual(mockLocal.savedFriends[.friend1]?.count, 1, "Should save to local cache")
     }
 
