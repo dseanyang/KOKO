@@ -18,7 +18,8 @@ final class FriendListViewModelTests: XCTestCase {
         sut = FriendListViewModel(
             getFriendListUseCase: mockFriendUseCase,
             getUserUseCase: mockUserUseCase,
-            scenario: .noFriends
+            scenario: .noFriends,
+            searchDebounceDelay: .zero
         )
     }
 
@@ -34,9 +35,7 @@ final class FriendListViewModelTests: XCTestCase {
         // Initially state should have isListLoading = false (initial state)
         XCTAssertFalse(sut.state.isListLoading)
 
-        sut.loadData()
-        // Give async tasks a moment to start
-        try? await Task.sleep(nanoseconds: 500_000_000)
+        await loadDataAndWait()
 
         XCTAssertFalse(sut.state.isListLoading, "Should be done loading")
         XCTAssertEqual(mockFriendUseCase.executeCallCount, 1)
@@ -46,23 +45,24 @@ final class FriendListViewModelTests: XCTestCase {
     func test_loadData_error_publishesErrorInState() async {
         mockFriendUseCase.errorToThrow = APIError.noData
 
-        sut.loadData()
-        try? await Task.sleep(nanoseconds: 500_000_000)
+        await loadDataAndWait()
 
         XCTAssertNotNil(sut.state.error, "Expected error message in state")
         XCTAssertFalse(sut.state.isListLoading)
     }
 
     func test_loadData_clearsSearchTextByDefault() async {
-        // Pre-seed search
-        sut.updateSearch("Old Search")
-        try? await Task.sleep(nanoseconds: 500_000_000) // wait for debounce
+        let friends = [
+            Friend(fid: "1", name: "Alice", status: 1, isTop: "0", updateDate: ""),
+            Friend(fid: "2", name: "Bob", status: 1, isTop: "0", updateDate: "")
+        ]
+        mockFriendUseCase.stubbedResult = FriendListResult(friends: friends, invitations: [])
+        await loadDataAndWait()
+        await updateSearchAndWait("Alice", expectedFriendCount: 1)
 
-        sut.loadData(clearSearch: true)
-        try? await Task.sleep(nanoseconds: 500_000_000)
+        await loadDataAndWait(clearSearch: true)
 
-        // After clearSearch=true, no filter should be applied
-        XCTAssertEqual(sut.state.displayedFriends.count, 0) // empty stub
+        XCTAssertEqual(sut.state.displayedFriends.count, 2)
     }
 
     func test_searchFilter_filtersFriendsByName() async {
@@ -72,24 +72,20 @@ final class FriendListViewModelTests: XCTestCase {
         ]
         mockFriendUseCase.stubbedResult = FriendListResult(friends: friends, invitations: [])
 
-        sut.loadData()
-        try? await Task.sleep(nanoseconds: 500_000_000)
+        await loadDataAndWait()
 
         // All friends shown before filter
         XCTAssertEqual(sut.state.displayedFriends.count, 2)
 
-        sut.updateSearch("Ali")
-        try? await Task.sleep(nanoseconds: 500_000_000) // wait for debounce
+        await updateSearchAndWait("Ali", expectedFriendCount: 1)
         XCTAssertEqual(sut.state.displayedFriends.count, 1)
         XCTAssertEqual(sut.state.displayedFriends.first?.name, "Alice")
     }
 
     func test_refresh_callsUseCaseTwice() async {
-        sut.loadData()
-        try? await Task.sleep(nanoseconds: 500_000_000)
+        await loadDataAndWait()
 
-        sut.refresh()
-        try? await Task.sleep(nanoseconds: 500_000_000)
+        await refreshAndWait()
 
         XCTAssertEqual(mockFriendUseCase.executeCallCount, 2)
     }
@@ -111,10 +107,10 @@ final class FriendListViewModelTests: XCTestCase {
         sut = FriendListViewModel(
             getFriendListUseCase: mockFriendUseCase,
             getUserUseCase: mockUserUseCase,
-            scenario: .noFriends
+            scenario: .noFriends,
+            searchDebounceDelay: .zero
         )
-        sut.loadData()
-        try? await Task.sleep(nanoseconds: 500_000_000)
+        await loadDataAndWait()
 
         XCTAssertFalse(sut.state.showSearchBar, "noFriends scenario should hide search bar")
         XCTAssertTrue(sut.state.showKokoIdDot, "noFriends scenario should show pink dot")
@@ -124,12 +120,51 @@ final class FriendListViewModelTests: XCTestCase {
         sut = FriendListViewModel(
             getFriendListUseCase: mockFriendUseCase,
             getUserUseCase: mockUserUseCase,
-            scenario: .friendsOnly
+            scenario: .friendsOnly,
+            searchDebounceDelay: .zero
         )
-        sut.loadData()
-        try? await Task.sleep(nanoseconds: 500_000_000)
+        await loadDataAndWait()
 
         XCTAssertTrue(sut.state.showSearchBar, "friendsOnly scenario should show search bar")
         XCTAssertFalse(sut.state.showKokoIdDot, "friendsOnly scenario should hide pink dot")
+    }
+
+    private func loadDataAndWait(clearSearch: Bool = true) async {
+        let expectation = expectation(description: "friend list finishes loading")
+        let cancellable = sut.$state.dropFirst().sink { state in
+            if !state.isListLoading {
+                expectation.fulfill()
+            }
+        }
+
+        sut.loadData(clearSearch: clearSearch)
+        await fulfillment(of: [expectation], timeout: 1)
+        cancellable.cancel()
+    }
+
+    private func refreshAndWait() async {
+        let expectation = expectation(description: "friend list refresh finishes")
+        let cancellable = sut.$state.dropFirst().sink { state in
+            if !state.isListLoading {
+                expectation.fulfill()
+            }
+        }
+
+        sut.refresh()
+        await fulfillment(of: [expectation], timeout: 1)
+        cancellable.cancel()
+    }
+
+    private func updateSearchAndWait(_ text: String, expectedFriendCount: Int) async {
+        let expectation = expectation(description: "search result updates")
+        let cancellable = sut.$state.dropFirst().sink { state in
+            if state.displayedFriends.count == expectedFriendCount {
+                expectation.fulfill()
+            }
+        }
+
+        sut.updateSearch(text)
+        await fulfillment(of: [expectation], timeout: 1)
+        cancellable.cancel()
     }
 }
