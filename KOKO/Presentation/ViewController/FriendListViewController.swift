@@ -35,23 +35,12 @@ class FriendListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
-        setupNavigationBar()
         setupDelegates()
         bindViewModel()
         viewModel.loadData()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = true
-    }
-
     // MARK: - Setup
-
-    private func setupNavigationBar() {
-        navigationController?.navigationBar.isHidden = true
-    }
-
     private func setupDelegates() {
         contentView.delegate = self
         contentView.tableView.dataSource = dataSource
@@ -227,7 +216,7 @@ class FriendListViewController: UIViewController {
             self.contentView.invitationCardsView.alpha = 0
             self.contentView.tabContainerView.alpha = 0
 
-            self.contentView.headerHeightConstraint?.constant = 54
+            self.contentView.headerHeightConstraint?.constant = 0
             self.contentView.tabHeightConstraint?.constant = 0
             self.contentView.layoutIfNeeded()
         }

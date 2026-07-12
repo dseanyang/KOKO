@@ -9,7 +9,7 @@ class FriendListView: UIView {
     
     weak var delegate: FriendListViewDelegate?
     
-    let headerHeight: CGFloat = 140
+    let headerHeight: CGFloat = 106
     let searchBarHeight: CGFloat = 44
     var headerHeightConstraint: NSLayoutConstraint?
     var cancelButtonWidthConstraint: NSLayoutConstraint?
@@ -19,27 +19,6 @@ class FriendListView: UIView {
     var searchBarHeightConstraint: NSLayoutConstraint?
 
     
-    let atmButton: UIButton = {
-        let b = UIButton(type: .custom)
-        b.setImage(UIImage(named: "icNavPinkWithdraw"), for: .normal)
-        b.translatesAutoresizingMaskIntoConstraints = false
-        return b
-    }()
-    
-    let transferButton: UIButton = {
-        let b = UIButton(type: .custom)
-        b.setImage(UIImage(named: "icNavPinkTransfer"), for: .normal)
-        b.translatesAutoresizingMaskIntoConstraints = false
-        return b
-    }()
-    
-    let scanButton: UIButton = {
-        let b = UIButton(type: .custom)
-        b.setImage(UIImage(named: "icNavPinkScan"), for: .normal)
-        b.translatesAutoresizingMaskIntoConstraints = false
-        return b
-    }()
-
     let profileHeaderView: UIView = {
         let v = UIView()
         v.backgroundColor = .hotGrey
@@ -260,9 +239,6 @@ class FriendListView: UIView {
     
     private func setupUI() {
         backgroundColor = .white
-        profileHeaderView.addSubview(atmButton)
-        profileHeaderView.addSubview(transferButton)
-        profileHeaderView.addSubview(scanButton)
         profileHeaderView.addSubview(avatarView)
         profileHeaderView.addSubview(nameLabel)
         profileHeaderView.addSubview(kokoIdLabel)
@@ -320,25 +296,9 @@ class FriendListView: UIView {
             profileHeaderView.trailingAnchor.constraint(equalTo: trailingAnchor),
             headerHeightConstraint!,
 
-            // Nav buttons (Top left and right)
-            atmButton.leadingAnchor.constraint(equalTo: profileHeaderView.leadingAnchor, constant: 16),
-            atmButton.topAnchor.constraint(equalTo: profileHeaderView.topAnchor, constant: 12),
-            atmButton.widthAnchor.constraint(equalToConstant: 24),
-            atmButton.heightAnchor.constraint(equalToConstant: 24),
-
-            transferButton.leadingAnchor.constraint(equalTo: atmButton.trailingAnchor, constant: 16),
-            transferButton.centerYAnchor.constraint(equalTo: atmButton.centerYAnchor),
-            transferButton.widthAnchor.constraint(equalToConstant: 24),
-            transferButton.heightAnchor.constraint(equalToConstant: 24),
-
-            scanButton.trailingAnchor.constraint(equalTo: profileHeaderView.trailingAnchor, constant: -16),
-            scanButton.centerYAnchor.constraint(equalTo: atmButton.centerYAnchor),
-            scanButton.widthAnchor.constraint(equalToConstant: 24),
-            scanButton.heightAnchor.constraint(equalToConstant: 24),
-
             // Avatar (Right side)
             avatarView.trailingAnchor.constraint(equalTo: profileHeaderView.trailingAnchor, constant: -20),
-            avatarView.topAnchor.constraint(equalTo: profileHeaderView.topAnchor, constant: 54),
+            avatarView.topAnchor.constraint(equalTo: profileHeaderView.topAnchor, constant: 20),
             avatarView.widthAnchor.constraint(equalToConstant: 52),
             avatarView.heightAnchor.constraint(equalToConstant: 52),
 
