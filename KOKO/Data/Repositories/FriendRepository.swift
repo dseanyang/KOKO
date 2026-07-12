@@ -43,52 +43,8 @@ final class FriendRepository: FriendRepositoryProtocol {
 
     private func fetch(remote: () async throws -> [Friend], cacheKey: FriendCacheKey) async throws -> [Friend] {
         do {
-            var friends = try await remote()
-            friends.append(
-                Friend(
-                    fid: "1",
-                    name: "測試好友",
-                    status: 0,
-                    isTop: "1",
-                    updateDate: "10000000000000000"
-                )
-            )
-            friends.append(
-                Friend(
-                    fid: "11",
-                    name: "測試好友1",
-                    status: 0,
-                    isTop: "1",
-                    updateDate: "10000000000000000"
-                )
-            )
-            friends.append(
-                Friend(
-                    fid: "111",
-                    name: "測試好友111",
-                    status: 0,
-                    isTop: "1",
-                    updateDate: "10000000000000000"
-                )
-            )
-            friends.append(
-                Friend(
-                    fid: "1",
-                    name: "測試好友11",
-                    status: 0,
-                    isTop: "1",
-                    updateDate: "10000000000000000"
-                )
-            )
-            friends.append(
-                Friend(
-                    fid: "12",
-                    name: "測試好友12",
-                    status: 0,
-                    isTop: "1",
-                    updateDate: "10000000000000000"
-                )
-            )
+            let friends = try await remote()
+            
             localDataSource.saveFriends(friends, cacheKey: cacheKey)
             return friends
         } catch {
