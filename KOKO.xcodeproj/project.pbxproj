@@ -10,6 +10,7 @@
 		14A276683002813D00DAACAB /* InvitationCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A276653002813D00DAACAB /* InvitationCardsView.swift */; };
 		14A276693002813D00DAACAB /* SingleInvitationCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A276663002813D00DAACAB /* SingleInvitationCardView.swift */; };
 		CC1000063000B54D0047853B /* InvitationCardsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1000073000B54D0047853B /* InvitationCardsViewTests.swift */; };
+		CC1000083000B54D0047853B /* EmptyFriendViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1000093000B54D0047853B /* EmptyFriendViewTests.swift */; };
 		14A2766B3003B66100DAACAB /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A2766A3003B66100DAACAB /* MainNavigationController.swift */; };
 		14F7D9732FFF7A520047853B /* UIColor+KK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9722FFF7A520047853B /* UIColor+KK.swift */; };
 		14F7D9B53000AA0C0047853B /* FriendMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9A93000AA0C0047853B /* FriendMapper.swift */; };
@@ -78,6 +79,7 @@
 		14A276653002813D00DAACAB /* InvitationCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationCardsView.swift; sourceTree = "<group>"; };
 		14A276663002813D00DAACAB /* SingleInvitationCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleInvitationCardView.swift; sourceTree = "<group>"; };
 		CC1000073000B54D0047853B /* InvitationCardsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationCardsViewTests.swift; sourceTree = "<group>"; };
+		CC1000093000B54D0047853B /* EmptyFriendViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyFriendViewTests.swift; sourceTree = "<group>"; };
 		14A2766A3003B66100DAACAB /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		14F7D9722FFF7A520047853B /* UIColor+KK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+KK.swift"; sourceTree = "<group>"; };
 		14F7D99D3000AA0C0047853B /* FriendDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDTO.swift; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 				ABCD00093000B54D0047853B /* FriendTableDataSourceTests.swift */,
 				CC1000043000B54D0047853B /* KOKONavigationControllerTests.swift */,
 				CC1000073000B54D0047853B /* InvitationCardsViewTests.swift */,
+				CC1000093000B54D0047853B /* EmptyFriendViewTests.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -596,6 +599,7 @@
 				ABCD00083000B54D0047853B /* FriendTableDataSourceTests.swift in Sources */,
 				CC1000033000B54D0047853B /* KOKONavigationControllerTests.swift in Sources */,
 				CC1000063000B54D0047853B /* InvitationCardsViewTests.swift in Sources */,
+				CC1000083000B54D0047853B /* EmptyFriendViewTests.swift in Sources */,
 				14F7DA063000B5180047853B /* UserRepositoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

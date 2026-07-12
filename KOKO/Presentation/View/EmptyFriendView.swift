@@ -118,11 +118,19 @@ class EmptyFriendView: UIView {
         addButton.addSubview(addButtonIcon)
         addSubview(footerLabel)
 
+        let illustrationHeightConstraint = illustrationView.heightAnchor.constraint(
+            equalToConstant: 172
+        )
+        // EmptyFriendView remains in the layout hierarchy when hidden. Let its
+        // illustration compress if another view (such as expanded invitations)
+        // leaves insufficient vertical space.
+        illustrationHeightConstraint.priority = .defaultHigh
+
         NSLayoutConstraint.activate([
             illustrationView.topAnchor.constraint(equalTo: topAnchor, constant: 30),
             illustrationView.centerXAnchor.constraint(equalTo: centerXAnchor),
             illustrationView.widthAnchor.constraint(equalToConstant: 245),
-            illustrationView.heightAnchor.constraint(equalToConstant: 172),
+            illustrationHeightConstraint,
 
             mainLabel.topAnchor.constraint(equalTo: illustrationView.bottomAnchor, constant: 40),
             mainLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
