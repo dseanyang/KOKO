@@ -22,8 +22,7 @@ class SingleInvitationCardView: UIView {
     
     private let acceptButton: UIButton = {
         let b = UIButton(type: .system)
-        b.setImage(UIImage(systemName: "checkmark"), for: .normal)
-        b.tintColor = .hotPink
+        b.setImage(UIImage(named: "btnFriendsAgree")?.withRenderingMode(.alwaysOriginal), for: .normal)
         b.backgroundColor = .white
         b.layer.borderWidth = 1.5
         b.layer.borderColor = UIColor.hotPink.cgColor
@@ -31,11 +30,10 @@ class SingleInvitationCardView: UIView {
         b.translatesAutoresizingMaskIntoConstraints = false
         return b
     }()
-    
+
     private let declineButton: UIButton = {
         let b = UIButton(type: .system)
-        b.setImage(UIImage(systemName: "xmark"), for: .normal)
-        b.tintColor = .warmGrey
+        b.setImage(UIImage(named: "btnFriendsDelet")?.withRenderingMode(.alwaysOriginal), for: .normal)
         b.backgroundColor = .white
         b.layer.borderWidth = 1.5
         b.layer.borderColor = UIColor.warmGrey.cgColor

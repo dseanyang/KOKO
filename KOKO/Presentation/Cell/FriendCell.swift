@@ -23,14 +23,6 @@ class FriendCell: UITableViewCell {
         return l
     }()
 
-    private let statusLabel: UILabel = {
-        let l = UILabel()
-        l.font = .systemFont(ofSize: 12, weight: .regular)
-        l.textColor = .warmGrey
-        l.translatesAutoresizingMaskIntoConstraints = false
-        return l
-    }()
-
     private let transferButton: UIButton = {
         let b = UIButton(type: .system)
         b.setTitle("轉帳", for: .normal)
@@ -74,7 +66,7 @@ class FriendCell: UITableViewCell {
 
     private let separatorLine: UIView = {
         let v = UIView()
-        v.backgroundColor = .veryLightGrey
+        v.backgroundColor = .cellLineGrey
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
@@ -97,17 +89,14 @@ class FriendCell: UITableViewCell {
             transferButton.isHidden = true
             invitingButton.isHidden = true
             moreButton.isHidden = true
-            statusLabel.text = "邀請送出"
         case .inviting: // Show Transfer AND Inviting
             transferButton.isHidden = false
             invitingButton.isHidden = false
             moreButton.isHidden = true
-            statusLabel.text = nil
         case .completed: // Show Transfer AND More
             transferButton.isHidden = false
             invitingButton.isHidden = true
             moreButton.isHidden = false
-            statusLabel.text = nil
         }
     }
 
@@ -118,7 +107,6 @@ class FriendCell: UITableViewCell {
         contentView.addSubview(avatarView)
         contentView.addSubview(starImageView)
         contentView.addSubview(nameLabel)
-        contentView.addSubview(statusLabel)
         contentView.addSubview(rightStackView)
         contentView.addSubview(separatorLine)
         
@@ -138,10 +126,7 @@ class FriendCell: UITableViewCell {
             starImageView.heightAnchor.constraint(equalToConstant: 14),
             
             nameLabel.leadingAnchor.constraint(equalTo: avatarView.trailingAnchor, constant: 16),
-            nameLabel.centerYAnchor.constraint(equalTo: avatarView.centerYAnchor, constant: -10),
-
-            statusLabel.leadingAnchor.constraint(equalTo: avatarView.trailingAnchor, constant: 12),
-            statusLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 4),
+            nameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             
             rightStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             rightStackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),

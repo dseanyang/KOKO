@@ -202,7 +202,6 @@ class FriendListView: UIView {
         tv.separatorStyle = .none
         tv.showsVerticalScrollIndicator = false
         tv.translatesAutoresizingMaskIntoConstraints = false
-        tv.register(InvitationCell.self, forCellReuseIdentifier: InvitationCell.reuseIdentifier)
         tv.register(FriendCell.self, forCellReuseIdentifier: FriendCell.reuseIdentifier)
         return tv
     }()
