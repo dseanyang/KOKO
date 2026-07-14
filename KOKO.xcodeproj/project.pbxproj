@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		14A276683002813D00DAACAB /* InvitationCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A276653002813D00DAACAB /* InvitationCardsView.swift */; };
 		14A276693002813D00DAACAB /* SingleInvitationCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A276663002813D00DAACAB /* SingleInvitationCardView.swift */; };
-		CC1000063000B54D0047853B /* InvitationCardsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1000073000B54D0047853B /* InvitationCardsViewTests.swift */; };
-		CC1000083000B54D0047853B /* EmptyFriendViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1000093000B54D0047853B /* EmptyFriendViewTests.swift */; };
 		14A2766B3003B66100DAACAB /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A2766A3003B66100DAACAB /* MainNavigationController.swift */; };
 		14F7D9732FFF7A520047853B /* UIColor+KK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9722FFF7A520047853B /* UIColor+KK.swift */; };
 		14F7D9B53000AA0C0047853B /* FriendMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9A93000AA0C0047853B /* FriendMapper.swift */; };
@@ -35,7 +33,6 @@
 		14F7D9DA3000AA300047853B /* FriendMerger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9CF3000AA300047853B /* FriendMerger.swift */; };
 		14F7D9DB3000AA300047853B /* FriendScenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9CC3000AA300047853B /* FriendScenario.swift */; };
 		14F7D9DC3000AA300047853B /* FriendListResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9CB3000AA300047853B /* FriendListResult.swift */; };
-		D0A100000000000000000002 /* RepositoryProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A100000000000000000001 /* RepositoryProtocols.swift */; };
 		14F7D9F63000AE420047853B /* FriendListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9EC3000AE420047853B /* FriendListView.swift */; };
 		14F7D9F73000AE420047853B /* ScenarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9F13000AE420047853B /* ScenarioViewController.swift */; };
 		14F7D9F83000AE420047853B /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9EF3000AE420047853B /* FriendListViewController.swift */; };
@@ -44,7 +41,6 @@
 		14F7D9FC3000AE420047853B /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9E33000AE420047853B /* FriendCell.swift */; };
 		14F7D9FD3000AE420047853B /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9F03000AE420047853B /* MainTabBarController.swift */; };
 		14F7D9FE3000AE420047853B /* EmptyFriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9EB3000AE420047853B /* EmptyFriendView.swift */; };
-		14F7D9FF3000AE420047853B /* InvitationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7D9E43000AE420047853B /* InvitationCell.swift */; };
 		14F7DA043000B5180047853B /* FriendMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7DA003000B5180047853B /* FriendMapperTests.swift */; };
 		14F7DA053000B5180047853B /* FriendRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7DA013000B5180047853B /* FriendRepositoryTests.swift */; };
 		14F7DA063000B5180047853B /* UserRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7DA023000B5180047853B /* UserRepositoryTests.swift */; };
@@ -64,6 +60,9 @@
 		ABCD00063000AE420047853B /* FriendTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCD00073000AE420047853B /* FriendTableDelegate.swift */; };
 		ABCD00083000B54D0047853B /* FriendTableDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCD00093000B54D0047853B /* FriendTableDataSourceTests.swift */; };
 		CC1000033000B54D0047853B /* KOKONavigationControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1000043000B54D0047853B /* KOKONavigationControllerTests.swift */; };
+		CC1000063000B54D0047853B /* InvitationCardsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1000073000B54D0047853B /* InvitationCardsViewTests.swift */; };
+		CC1000083000B54D0047853B /* EmptyFriendViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1000093000B54D0047853B /* EmptyFriendViewTests.swift */; };
+		D0A100000000000000000002 /* RepositoryProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A100000000000000000001 /* RepositoryProtocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,8 +78,6 @@
 /* Begin PBXFileReference section */
 		14A276653002813D00DAACAB /* InvitationCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationCardsView.swift; sourceTree = "<group>"; };
 		14A276663002813D00DAACAB /* SingleInvitationCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleInvitationCardView.swift; sourceTree = "<group>"; };
-		CC1000073000B54D0047853B /* InvitationCardsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationCardsViewTests.swift; sourceTree = "<group>"; };
-		CC1000093000B54D0047853B /* EmptyFriendViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyFriendViewTests.swift; sourceTree = "<group>"; };
 		14A2766A3003B66100DAACAB /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		14F7D9722FFF7A520047853B /* UIColor+KK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+KK.swift"; sourceTree = "<group>"; };
 		14F7D99D3000AA0C0047853B /* FriendDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDTO.swift; sourceTree = "<group>"; };
@@ -105,9 +102,7 @@
 		14F7D9D03000AA300047853B /* FriendSorter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSorter.swift; sourceTree = "<group>"; };
 		14F7D9D13000AA300047853B /* GetFriendListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFriendListUseCase.swift; sourceTree = "<group>"; };
 		14F7D9D23000AA300047853B /* GetUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserUseCase.swift; sourceTree = "<group>"; };
-		D0A100000000000000000001 /* RepositoryProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryProtocols.swift; sourceTree = "<group>"; };
 		14F7D9E33000AE420047853B /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
-		14F7D9E43000AE420047853B /* InvitationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationCell.swift; sourceTree = "<group>"; };
 		14F7D9E73000AE420047853B /* KKAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKAvatarView.swift; sourceTree = "<group>"; };
 		14F7D9EB3000AE420047853B /* EmptyFriendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyFriendView.swift; sourceTree = "<group>"; };
 		14F7D9EC3000AE420047853B /* FriendListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListView.swift; sourceTree = "<group>"; };
@@ -139,6 +134,9 @@
 		CC0000000000000000000001 /* KOKO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KOKO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC0000000000000000000002 /* KOKOTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KOKOTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC1000043000B54D0047853B /* KOKONavigationControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOKONavigationControllerTests.swift; sourceTree = "<group>"; };
+		CC1000073000B54D0047853B /* InvitationCardsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationCardsViewTests.swift; sourceTree = "<group>"; };
+		CC1000093000B54D0047853B /* EmptyFriendViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyFriendViewTests.swift; sourceTree = "<group>"; };
+		D0A100000000000000000001 /* RepositoryProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryProtocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,14 +256,6 @@
 			path = UseCases;
 			sourceTree = "<group>";
 		};
-		D0A100000000000000000003 /* Repositories */ = {
-			isa = PBXGroup;
-			children = (
-				D0A100000000000000000001 /* RepositoryProtocols.swift */,
-			);
-			path = Repositories;
-			sourceTree = "<group>";
-		};
 		14F7D9D43000AA300047853B /* Domain */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,7 +270,6 @@
 			isa = PBXGroup;
 			children = (
 				14F7D9E33000AE420047853B /* FriendCell.swift */,
-				14F7D9E43000AE420047853B /* InvitationCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -385,6 +374,14 @@
 				ABCD00073000AE420047853B /* FriendTableDelegate.swift */,
 			);
 			path = Adapter;
+			sourceTree = "<group>";
+		};
+		D0A100000000000000000003 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				D0A100000000000000000001 /* RepositoryProtocols.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 		FF0000000000000000000001 = {
@@ -563,7 +560,6 @@
 				14F7D9FC3000AE420047853B /* FriendCell.swift in Sources */,
 				14F7D9FD3000AE420047853B /* MainTabBarController.swift in Sources */,
 				14F7D9FE3000AE420047853B /* EmptyFriendView.swift in Sources */,
-				14F7D9FF3000AE420047853B /* InvitationCell.swift in Sources */,
 				14F7D9D73000AA300047853B /* FriendSorter.swift in Sources */,
 				14F7D9D83000AA300047853B /* GetUserUseCase.swift in Sources */,
 				14F7D9D93000AA300047853B /* User.swift in Sources */,
