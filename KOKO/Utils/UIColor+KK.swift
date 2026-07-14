@@ -5,6 +5,7 @@ extension UIColor {
     static let kkWhite = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
     static let lightGrey       = UIColor(red: 71/255,  green: 71/255,  blue: 71/255,  alpha: 1)
     static let hotGrey       = UIColor(red: 252/255, green: 252/255,   blue: 252/255, alpha: 1)
+    static let cellLineGrey       = UIColor(red: 228/255, green: 228/255,   blue: 228/255, alpha: 1)
     static let warmGrey    = UIColor(red: 153/255, green: 153/255, blue: 153/255, alpha: 1)
     static let veryLightGrey  = UIColor(red: 239/255, green: 239/255, blue: 239/255, alpha: 1)
     static let frogGreen      = UIColor(red: 86/255,  green: 179/255, blue: 11/255,  alpha: 1)
